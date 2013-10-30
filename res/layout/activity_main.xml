@@ -3,11 +3,14 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
-    <Button android:id="@+id/date_picker_button"
+
+    <Button
+        android:id="@+id/date_picker_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/open_date_picker" 
+        android:text="@string/open_date_picker"
         android:textSize="@dimen/text_size" />
+
     <CalendarView
         android:id="@+id/calendar_view"
         android:layout_width="match_parent"
