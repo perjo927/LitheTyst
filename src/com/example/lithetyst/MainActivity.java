@@ -1,31 +1,42 @@
 package com.example.lithetyst;
 
-import android.os.Bundle;
+import java.util.Calendar;
 
+import android.app.Activity;
+import android.app.DatePickerDialog;
+import android.content.Intent;
+import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.app.Activity;
-import android.app.DatePickerDialog;
-
-import java.util.Calendar;
-
+import android.widget.Button;
 import android.widget.CalendarView;
 import android.widget.CalendarView.OnDateChangeListener;
-import android.widget.Toast;
 import android.widget.DatePicker;
-import android.widget.Button;
+import android.widget.Toast;
 
 public class MainActivity extends Activity {
     private CalendarView calendarView;
     private int yr, mon, dy;
     private Calendar selectedDate;
 	
+    
+    Button b1, b2;
+	 VolumeController vc;	
+	 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		
+	
+		 b1 = (Button) findViewById(R.id.button1);
+		 b2 = (Button) findViewById(R.id.button2);
+		
+
+		 
+		 createListeners();
+		 
 		Calendar c = Calendar.getInstance();
         yr = c.get(Calendar.YEAR);
         mon = c.get(Calendar.MONTH);
@@ -50,6 +61,23 @@ public class MainActivity extends Activity {
             });
 	}
 
+	private void createListeners() {
+        b1.setOnClickListener(new OnClickListener() {
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+            	//startSecondActivity(1);
+            	vc.restoreVolume();
+            }
+        });
+        b2.setOnClickListener(new OnClickListener() {
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+            	//startSecondActivity(1);
+            	vc.mute();
+            }
+        });
+    }
+	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
@@ -73,4 +101,10 @@ public class MainActivity extends Activity {
             }
         };
 
+        private void startSecondActivity(int buttonNum) {
+        	   Intent intent = new Intent(this, SecondActivity.class);
+        	   intent.putExtra("BUTTON NUMBER", buttonNum);
+        	   startActivity(intent);
+        	}
+        
 }

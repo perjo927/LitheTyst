@@ -11,6 +11,18 @@
         android:text="@string/open_date_picker"
         android:textSize="@dimen/text_size" />
 
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/button_on" />
+    
+     <Button	
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/button_off" />
+
     <CalendarView
         android:id="@+id/calendar_view"
         android:layout_width="match_parent"
