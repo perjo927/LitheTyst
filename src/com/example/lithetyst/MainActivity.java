@@ -60,20 +60,30 @@ public class MainActivity extends Activity {
                 }
             });
 	}
-
+	
+	/** on button */
+	public void unMute(View view) {
+	    // Do something in response to button
+		vc.mute();		
+	}
+	public void mute(View view) {
+	    // Do something in response to button
+		vc.restoreVolume();
+	}
+	
+	
 	private void createListeners() {
         b1.setOnClickListener(new OnClickListener() {
             public void onClick(View v) {
                 // TODO Auto-generated method stub
             	//startSecondActivity(1);
-            	vc.restoreVolume();
             }
         });
         b2.setOnClickListener(new OnClickListener() {
             public void onClick(View v) {
                 // TODO Auto-generated method stub
             	//startSecondActivity(1);
-            	vc.mute();
+            	//vc.mute();
             }
         });
     }
