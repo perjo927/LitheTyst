@@ -12,7 +12,8 @@
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
+        
+        android:theme="@style/CustomActionBarTheme" >
         <activity
             android:name="com.example.lithetyst.MainActivity"
             android:label="@string/app_name" >
@@ -24,8 +25,16 @@
         </activity>
         <activity
             android:name="com.example.lithetyst.SecondActivity"
-            android:screenOrientation="landscape" 
-            android:label="@string/title_activity_second" >
+            android:label="@string/title_activity_second"
+            android:screenOrientation="landscape" >
+        </activity>
+        <activity
+            android:name="com.example.lithetyst.DisplayMessageActivity"
+            android:label="@string/title_activity_display_message"
+            android:parentActivityName="com.example.lithetyst.MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.lithetyst.MainActivity" />
         </activity>
     </application>
 

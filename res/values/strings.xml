@@ -3,10 +3,15 @@
 
     <string name="app_name">LitHe Tyst</string>
     <string name="action_settings">Settings</string>
+    <string name="action_search">Search</string>
     <string name="hello_world">Hello world!</string>
     <string name="open_date_picker">Open Date Picker</string>
     <string name="title_activity_second">SecondActivity</string>
     <string name="button_on">On</string>
-    <string name="button_off">off</string>
+    <string name="button_off">Off</string>
+    <string name="button_display">Display</string>
+    <string name="edit_message">Edit</string>
+    <string name="title_activity_display_message">Lithe Tyst </string>
+    <color name="actionbar_text">#FF9933</color>
 
 </resources>
