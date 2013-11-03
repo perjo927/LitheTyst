@@ -1,8 +1,10 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <!-- Välj datum -->
 
     <Button
         android:id="@+id/date_picker_button"
@@ -15,25 +17,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" >
 
-        <Button
-            android:id="@+id/button1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:onClick="unMute"
-            android:text="@string/button_on" />
+        <!-- mute-knapp -->
 
 
+        <!-- unmute-knapp -->
 
-        <Button
-            android:id="@+id/button2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_toRightOf="@+id/button1"
-            android:onClick="mute"
-            android:text="@string/button_off" />
+
+        <!-- Skicka meddelande till aktivitet -->
 
         <Button
             android:id="@+id/button3"
@@ -45,14 +35,61 @@
             android:onClick="sendMessage"
             android:text="@string/button_display" />
 
+        <!-- Redigera tet som ska skickas vidare -->
+
         <EditText
             android:id="@+id/edit_message"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_toRightOf="@+id/button2"
-        	android:hint="@string/edit_message"
-            />
+            android:hint="@string/edit_message" />
+
+        <!-- tab-knapp -->
+
+    </RelativeLayout>
+
+    <!-- Visa Kalendern -->
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <Button
+            android:id="@+id/button4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:onClick="startTabActivity"
+            android:text="@string/button_tab" />
+
+        <Button
+            android:id="@+id/button1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@+id/button4"
+            android:onClick="unMute"
+            android:text="@string/button_on" />
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@+id/button1"
+            android:onClick="mute"
+            android:text="@string/button_off" />
+
+        <Button
+            android:id="@+id/button5"
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:onClick="startSecondActivity"
+            android:text="@string/button_disappointing" />
 
     </RelativeLayout>
 
@@ -60,4 +97,5 @@
         android:id="@+id/calendar_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
+
 </LinearLayout>
