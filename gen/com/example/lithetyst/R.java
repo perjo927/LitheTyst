@@ -11,6 +11,8 @@ public final class R {
     public static final class attr {
     }
     public static final class color {
+        /**  Färger 
+         */
         public static final int actionbar_text=0x7f060000;
         public static final int custom_theme_color=0x7f060001;
     }
@@ -69,12 +71,13 @@ public final class R {
     }
     public static final class menu {
         public static final int display_message=0x7f080000;
-        public static final int main=0x7f080001;
-        public static final int main_activity_actions=0x7f080002;
-        public static final int second=0x7f080003;
-        public static final int tab=0x7f080004;
+        public static final int main_activity_actions=0x7f080001;
+        public static final int second=0x7f080002;
+        public static final int tab=0x7f080003;
     }
     public static final class string {
+        /**   Menyval 
+         */
         public static final int action_about=0x7f050001;
         public static final int action_help=0x7f050002;
         public static final int action_search=0x7f050004;
@@ -83,14 +86,20 @@ public final class R {
         public static final int button_disappointing=0x7f05000a;
         public static final int button_display=0x7f050009;
         public static final int button_off=0x7f050008;
+        /**   Knappar i main 
+         */
         public static final int button_on=0x7f050007;
         public static final int button_tab=0x7f05000b;
         public static final int edit_message=0x7f05000c;
         public static final int hello_world=0x7f050005;
         public static final int open_date_picker=0x7f050006;
         public static final int title_activity_display_message=0x7f05000e;
+        /**   Sidotitlar 
+         */
         public static final int title_activity_second=0x7f05000d;
         public static final int title_activity_tab=0x7f05000f;
+        /**  Tabbar 
+         */
         public static final int title_section1=0x7f050010;
         public static final int title_section2=0x7f050011;
         public static final int title_section3=0x7f050012;

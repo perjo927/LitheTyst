@@ -41,8 +41,9 @@ public class MainActivity extends Activity {
 		// På och av
 		 //b1 = (Button) findViewById(R.id.button1);
 		 //b2 = (Button) findViewById(R.id.button2);
-		 // knapplyssnare
+		 // initiera knapplyssnare
 		 //createListeners();
+		
 		 
 		//// KALENDERKOD ////
 		Calendar c = Calendar.getInstance();
@@ -71,12 +72,20 @@ public class MainActivity extends Activity {
 	}
 	//// SLUT KALENDERKOD ////
 	
+	
+	
+	/// onClick-händelser! ///
 	/** button onclick = sendmessage! */
 	public void sendMessage(View view) {
+		// Vad vill vi starta?
 	    Intent intent = new Intent(this, DisplayMessageActivity.class);
+	    // Hitta redigeringsrutan
 	    EditText editText = (EditText) findViewById(R.id.edit_message);
+	    // Fånga texten
 	    String message = editText.getText().toString();
+	    // Skicka vidare till nya aktivitet
 	    intent.putExtra(EXTRA_MESSAGE, message);
+	    // Starta ny aktivitet
 	    startActivity(intent);
 	}
 	
@@ -90,25 +99,23 @@ public class MainActivity extends Activity {
 	
 	/** på/av */
 	public void unMute(View view) {
-	    // Do something in response to button
 		//vc.mute();		
 		System.out.println("unmute");
 	}
 	public void mute(View view) {
-	    // Do something in response to button
 		//vc.restoreVolume();
 		System.out.println("mute");
 	}
 	
 	
-    // 
+    // Meningslös aktivitet
     public void startSecondActivity(View view) {
     	   Intent intent = new Intent(this, SecondActivity.class);
     	   intent.putExtra("BUTTON NUMBER", 1337);
     	   startActivity(intent);
-    	}
+    	}  
+	/// slut onClick ///
     
-	
 	/* Lyssnare
 	private void createListeners() {
         b1.setOnClickListener(new OnClickListener() {
@@ -127,7 +134,7 @@ public class MainActivity extends Activity {
     }
     */
 
-	// Main-meny! Top/bottom ?
+	// Main-meny
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		
@@ -153,17 +160,21 @@ public class MainActivity extends Activity {
         		System.out.println("Help");
         		return true;
 	        case R.id.action_settings_top:
-	            //openSettings();
+	            //openSettings(); // startActivity
 	        	System.out.println("Settings top");
 	            return true;
 	        case R.id.action_settings:
-	            //openSettings();
+	            //openSettings(); // startActivity
 	        	System.out.println("open settings");
 	            return true;
 	        default:
 	            return super.onOptionsItemSelected(item);
 	    }
 	}
+	// Slut meny
+	
+	
+	
 	
 	//// KALENDERKOD
     private DatePickerDialog.OnDateSetListener dateListener =
@@ -182,5 +193,4 @@ public class MainActivity extends Activity {
             }
         };
         //// SLUT KALENDERKOD
-
 }

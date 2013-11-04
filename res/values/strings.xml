@@ -3,6 +3,7 @@
 
     <string name="app_name">LitHe Tyst</string>
     
+    <!--  Menyval -->
     <string name="action_about">About</string>
     <string name="action_help">Help</string>
     <string name="action_settings">Settings</string>
@@ -11,6 +12,7 @@
     <string name="hello_world">Hello world!</string>
     <string name="open_date_picker">Välj datum</string>
     
+    <!--  Knappar i main -->
     <string name="button_on">Ljud på</string>
     <string name="button_off">Ljud av</string>
     <string name="button_display">Visa</string>
@@ -19,13 +21,16 @@
     
     <string name="edit_message">Redigera</string>  
     
+    <!--  Sidotitlar -->
     <string name="title_activity_second">LitHe Tyst SecondActivity</string>
     <string name="title_activity_display_message">LitHe Tyst Display Message</string>
-    <string name="title_activity_tab">TabActivity</string>
+    <string name="title_activity_tab">LiThe Tyst TabActivity</string>
     
+    <!-- Färger -->
     <color name="actionbar_text">#FFFFFF</color>
     <color name="custom_theme_color">#56E6E6</color>
 
+    <!-- Tabbar -->
     <string name="title_section1">Dag</string>
     <string name="title_section2">Vecka</string>
     <string name="title_section3">Månad</string>
