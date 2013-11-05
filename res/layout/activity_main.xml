@@ -4,12 +4,13 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
 
-    <!-- Välj datum -->
+    <!-- Gå till kalender-->
     <Button
-        android:id="@+id/date_picker_button"
+        android:id="@+id/button_calendar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/open_date_picker"
+        android:text="@string/button_calendar"
+        android:onClick="startCalendar"
         android:textSize="@dimen/text_size" />
 
     <RelativeLayout
@@ -84,10 +85,6 @@
             android:text="@string/button_disappointing" />
     </RelativeLayout>
 
-    <!-- Visa Kalendern -->
-    <CalendarView
-        android:id="@+id/calendar_view"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+    
 
 </LinearLayout>

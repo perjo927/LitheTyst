@@ -44,11 +44,15 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.lithetyst.MainActivity" />
         </activity>
-        
+
         <!-- Tab-vy -->
         <activity
             android:name="com.example.lithetyst.TabActivity"
             android:label="@string/title_activity_tab" >
+        </activity>
+        <activity
+            android:name="com.example.lithetyst.CalendarActivity"
+            android:label="@string/title_activity_calendar" >
         </activity>
     </application>
 
