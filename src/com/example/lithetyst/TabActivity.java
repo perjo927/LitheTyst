@@ -1,7 +1,6 @@
 package com.example.lithetyst;
 
 import java.util.Locale;
-
 import android.app.ActionBar;
 import android.app.FragmentTransaction;
 import android.os.Bundle;
@@ -14,49 +13,27 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CalendarView;
+import android.widget.TextView;
+import android.widget.CalendarView.OnDateChangeListener;
 
 public class TabActivity extends FragmentActivity implements
 		ActionBar.TabListener {
-
 	
-	private static String chosenDate =""; // TODO
+	private static String chosenDate = "00-00-00"; // TODO: dagens datum
     //public final static String YEAR = "com.example.lithetyst.YEAR";
 	
 	// PagerAdapter tillhandahåller Fragment för varje section 
 	private SectionsPagerAdapter mSectionsPagerAdapter;
 
 	// ViewPager är värd för innehållet i varje section 
-	private ViewPager mViewPager;
-	
+	private static ViewPager mViewPager;  
+    
 
 	// Skapa tabbsidan
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		
-		// TODO dagesn datum om vi valt det i månadsvyn
-		// Hämta
-//		Bundle extras = getIntent().getExtras();
-//		if (extras == null) {
-//		    //return;
-//		}
-//		// Get data via the key
-//		String value1 = extras.getString(CalendarActivity.TABTYPE);
-//		if (value1 != null) {
-//		  // do something with the data
-//			System.out.println("value1 + " + value1);
-//		} 
-		
-		// Get the message from the intent
-	    //Intent intent = getIntent();
-	    // TODO	    
-//	    		String year = intent.getStringExtra(CalendarActivity.YEAR);
-//	    		String month = intent.getStringExtra(CalendarActivity.MONTH);
-//	    		String day = intent.getStringExtra(CalendarActivity.DAY);
-//	    		
-//	    		chosenDate = year+month+day;
-//	    		System.out.println(chosenDate);
-
 		
 		// Root-vyn/layout
 		setContentView(R.layout.activity_tab);
@@ -96,7 +73,7 @@ public class TabActivity extends FragmentActivity implements
 					.setTabListener(this));
 		}
 		// TODO:
-		// Sätt defaulttab BEROENDE PÅ SETTINGS!!!
+		// Sätt static defaulttab BEROENDE PÅ SETTINGS!!!
 		int defaultTab = 2;
 		mViewPager.setCurrentItem(defaultTab);
 	}
@@ -127,8 +104,7 @@ public class TabActivity extends FragmentActivity implements
 			FragmentTransaction fragmentTransaction) {
 		// TODO
 	}
-
-	// SectionsPagerAdapter 
+	       
 	// Returnerar ett Fragment som motsvarar en tab/section/vy/sida 
 	public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
@@ -138,8 +114,8 @@ public class TabActivity extends FragmentActivity implements
 
 		@Override
 		public Fragment getItem(int position) {
-			// TODO
-			// getItem skapar en instans av ett Fragment för den givna sidan.
+			// getItem skapar en instans av ett Fragment 
+			// för den givna sidan som användaren valt.
 			// Returnera ett CalendarSectionFragment (som definieras nedan)
 			// med sidonumret som argument.
 			Fragment fragment = new CalendarSectionFragment();
@@ -195,7 +171,7 @@ public class TabActivity extends FragmentActivity implements
 		// Skapa vyn
 		@Override
 		public View onCreateView(LayoutInflater inflater, ViewGroup container,	
-				Bundle savedInstanceState) {
+				Bundle savedInstanceState) {	    
 			
 			View rootView; // ska fyllas och returneras
 
@@ -205,14 +181,37 @@ public class TabActivity extends FragmentActivity implements
 		    SectionType currentType = SectionType.valueOf(chosenTab.toUpperCase(Locale.getDefault()));
 		    // Switcha enum-värdet, öppna rätt vy/layout till rätt flik
 			switch (currentType) {
-			case DAG: // SectionType.Dag
+			case DAG:				
 				 rootView = inflater.inflate(R.layout.fragment_tab,container, false);
+				 
+					// TODO: Parsa rätt dag - OM CalendarActivity vill det
+					TextView dateTextView = (TextView) rootView
+					.findViewById(R.id.section_label);
+					dateTextView.setText(chosenDate);				 
+				 
 				 return rootView;
 			case VECKA:
+				 // TODO: Ta bort fragment_tab så småningom
 				 rootView = inflater.inflate(R.layout.fragment_tab,container, false);
 				 return rootView;
 			case MÅNAD:
 				 rootView = inflater.inflate(R.layout.activity_calendar,container, false);
+		 				 
+				 ///
+				 CalendarView calendarView = (CalendarView) rootView.findViewById(R.id.calendar_view);
+				
+			       calendarView.setOnDateChangeListener(new OnDateChangeListener() {
+			               @Override
+			               public void onSelectedDayChange(CalendarView view,
+			            		   int year, int month, int dayOfMonth) {
+
+			            	   chosenDate = year + " " + month + " " + dayOfMonth;
+			            	   System.out.println("onSelectedDayChange: " + chosenDate);
+			            	   
+			            	   // Byt till dagfliken, rätt datum
+			            	   mViewPager.setCurrentItem(SectionType.DAG.ordinal()); 
+			               }
+			           });					 
 				 return rootView;
 			default:
 				 // Hit borde vi inte komma

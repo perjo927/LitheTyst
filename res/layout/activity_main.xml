@@ -5,6 +5,7 @@
     android:orientation="vertical" >
 
     <!-- Gå till kalender-->
+    <!-- 
     <Button
         android:id="@+id/button_calendar"
         android:layout_width="match_parent"
@@ -12,12 +13,13 @@
         android:text="@string/button_calendar"
         android:onClick="startCalendar"
         android:textSize="@dimen/text_size" />
-
+ -->
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content" >
 
         <!-- Skicka meddelande till aktivitet -->
+        <!-- 
         <Button
             android:id="@+id/button3"
             android:layout_width="wrap_content"
@@ -27,14 +29,16 @@
             android:layout_marginRight="33dp"
             android:onClick="sendMessage"
             android:text="@string/button_display" />
-
+ -->
         <!-- Redigera text som ska skickas vidare -->
+        <!-- 
         <EditText
             android:id="@+id/edit_message"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:hint="@string/edit_message" />
+             -->
     </RelativeLayout>
 
 
@@ -54,6 +58,7 @@
 
 
         <!-- unmute-knapp -->
+        <!-- 
         <Button
             android:id="@+id/button1"
             android:layout_width="wrap_content"
@@ -62,8 +67,9 @@
             android:layout_toRightOf="@+id/button4"
             android:onClick="unMute"
             android:text="@string/button_on" />
-
+ -->
         <!-- mute-knapp -->
+        <!-- 
         <Button
             android:id="@+id/button2"
             android:layout_width="wrap_content"
@@ -72,8 +78,9 @@
             android:layout_toRightOf="@+id/button1"
             android:onClick="mute"
             android:text="@string/button_off" />
-
+ -->
         <!-- Meningslös knapp -->
+        <!-- 
         <Button
             android:id="@+id/button5"
             style="?android:attr/buttonStyleSmall"
@@ -83,6 +90,7 @@
             android:layout_alignParentTop="true"
             android:onClick="startSecondActivity"
             android:text="@string/button_disappointing" />
+             -->
     </RelativeLayout>
 
     

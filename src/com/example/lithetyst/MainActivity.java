@@ -9,7 +9,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.EditText;
+//import android.widget.EditText;
 
 
 public class MainActivity extends Activity {
@@ -25,9 +25,11 @@ public class MainActivity extends Activity {
 		 
 	}
 
-	
+
 	/// onClick-händelser! ///
-	/** button onclick = sendmessage! */
+
+	/*
+	// button onclick = sendmessage! 
 	public void sendMessage(View view) {
 		// Vad vill vi starta?
 	    Intent intent = new Intent(this, DisplayMessageActivity.class);
@@ -40,23 +42,28 @@ public class MainActivity extends Activity {
 	    // Starta ny aktivitet
 	    startActivity(intent);
 	}
-	
-	/** button onclick = startTabActivity! */
+	*/
+	/// button onclick = startTabActivity! 
+	/*
 	public void startCalendar(View view) {
 	    Intent intent = new Intent(this, CalendarActivity.class);
 	    startActivity(intent);
 	}
+	*/
 	
-	// kalendervy
+	
+	
+	//// FLIKVY ////
 	public void startTabActivity(View view) {
 	    Intent intent = new Intent(this, TabActivity.class);
 	    String message = "Nu vill vi öppna tab-vy";
 	    intent.putExtra(EXTRA_MESSAGE, message);
 	    startActivity(intent);
 	}
-	
+	////
 	
 	/** på/av */
+	/*
 	public void unMute(View view) {
 		//vc.mute();		
 		System.out.println("unmute");
@@ -65,14 +72,15 @@ public class MainActivity extends Activity {
 		//vc.restoreVolume();
 		System.out.println("mute");
 	}
-	
-	
+	*/
+	/*
     // Meningslös aktivitet
     public void startSecondActivity(View view) {
     	   Intent intent = new Intent(this, SecondActivity.class);
     	   intent.putExtra("BUTTON NUMBER", 1337);
     	   startActivity(intent);
     	}  
+    	*/
 	/// slut onClick ///
 
     

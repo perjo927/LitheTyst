@@ -54,6 +54,7 @@
             android:name="com.example.lithetyst.CalendarActivity"
             android:label="@string/title_activity_calendar" >
         </activity>
+
     </application>
 
 </manifest>

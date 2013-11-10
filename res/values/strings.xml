@@ -11,7 +11,7 @@
     <string name="hello_world">Hello world!</string>
     <string name="open_date_picker">Välj datum</string>
 
-    <!-- Knappar  -->
+    <!-- Knappar -->
     <string name="button_calendar">iCal</string>
     <string name="button_on">Ljud på</string>
     <string name="button_off">Ljud av</string>
@@ -24,7 +24,6 @@
     <string name="title_activity_second">LitHe Tyst SecondActivity</string>
     <string name="title_activity_display_message">LitHe Tyst Display Message</string>
     <string name="title_activity_tab">LiThe Tyst TabActivity</string>
-
 
     <!-- Färger -->
     <color name="actionbar_text">#FFFFFF</color>
