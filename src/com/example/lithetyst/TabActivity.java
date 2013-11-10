@@ -95,6 +95,10 @@ public class TabActivity extends FragmentActivity implements
 					.setText(mSectionsPagerAdapter.getPageTitle(i))
 					.setTabListener(this));
 		}
+		// TODO:
+		// Sätt defaulttab BEROENDE PÅ SETTINGS!!!
+		int defaultTab = 2;
+		mViewPager.setCurrentItem(defaultTab);
 	}
 
 	// TODO: Rätt meny

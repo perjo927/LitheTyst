@@ -25,6 +25,7 @@
     <string name="title_activity_display_message">LitHe Tyst Display Message</string>
     <string name="title_activity_tab">LiThe Tyst TabActivity</string>
 
+
     <!-- Färger -->
     <color name="actionbar_text">#FFFFFF</color>
     <color name="custom_theme_color">#56E6E6</color>
@@ -33,6 +34,6 @@
     <string name="title_section1">Dag</string>
     <string name="title_section2">Vecka</string>
     <string name="title_section3">Månad</string>
-    <string name="title_activity_calendar">CalendarActivity</string>
+    <string name="title_activity_calendar">Ganska Tyst - CalendarActivity</string>
 
 </resources>
