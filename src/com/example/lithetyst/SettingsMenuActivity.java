@@ -75,6 +75,9 @@ public class SettingsMenuActivity extends Activity {
 	public boolean onOptionsItemSelected(MenuItem item) {
 	    // Handle presses on the action bar items
 	    switch (item.getItemId()) {
+        	case R.id.action_calendar_top:
+        		startTabActivity();
+        		return true;
 	        case R.id.action_calendar:
 	        	startTabActivity();
 	            return true;

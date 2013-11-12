@@ -72,11 +72,11 @@
     <string name="edit_schedule">Lägg till/ändra schema</string>
     
     <!-- Sidotitlar -->
-    <string name="title_activity_sync">SyncActivity</string>
+    <string name="title_activity_sync">LiTHe Tyst: SyncActivity</string>
     <string name="title">Inställningar</string>
-    <string name="title_activity_settings_menu">SettingsMenuActivity</string>
-    <string name="title_activity_second_settings">SecondSettingsActivity</string>
-    <string name="title_activity_tab">LiTHe Tyst TabActivity</string>
+    <string name="title_activity_settings_menu">LiTHe Tyst: Inställningar</string>
+    <string name="title_activity_second_settings">LiTHe Tyst: Inställningar</string>
+    <string name="title_activity_tab">LiTHe Tyst: Kalender</string>
     
     <string name="day">Dag</string>
     <string name="week">Vecka</string>
