@@ -213,7 +213,7 @@ public class TabActivity extends FragmentActivity implements
 	public static class CalendarSectionFragment extends Fragment {
 		// Fragmentets argument som representerar rubriken för dess section 
 		public static final String ARG_SECTION_TITLE = "section_title";
-		private static enum SectionType { DAG, VECKA, MÅNAD; } // Flikar/tabbar
+		private static enum SectionType { DAY, WEEK, MONTH; } // Flikar/tabbar
 		
 		// konstruktor
 		public CalendarSectionFragment() {
@@ -233,7 +233,7 @@ public class TabActivity extends FragmentActivity implements
 		    SectionType currentType = SectionType.valueOf(chosenTab.toUpperCase(Locale.getDefault()));
 		    // Switcha enum-värdet, öppna rätt vy/layout till rätt flik
 			switch (currentType) {
-			case DAG:				
+			case DAY:				
 				 rootView = inflater.inflate(R.layout.activity_day,container, false);
 				 
 				 // TODO: Parsa rätt dag - OM CalendarActivity vill det
@@ -255,7 +255,7 @@ public class TabActivity extends FragmentActivity implements
 
 				 
 				 return rootView;
-			case VECKA:
+			case WEEK:
 				 // TODO: Ta bort fragment_tab så småningom ***
 				 // TODO: Byt ut mot veckovy
 				 rootView = inflater.inflate(R.layout.fragment_tab,container, false);
@@ -265,7 +265,7 @@ public class TabActivity extends FragmentActivity implements
 					dateTextView.setText("Veckovy ej implementerad!");	
 				 
 				 return rootView;
-			case MÅNAD:
+			case MONTH:
 				 rootView = inflater.inflate(R.layout.activity_calendar,container, false);
 		 				 
 				 ///
@@ -281,7 +281,7 @@ public class TabActivity extends FragmentActivity implements
 		            	   chosenDay = day;
 		            	   
 		            	   // Byt till dagfliken, rätt datum
-		            	   mViewPager.setCurrentItem(SectionType.DAG.ordinal()); 
+		            	   mViewPager.setCurrentItem(SectionType.DAY.ordinal()); 
 		               }
 		               });					 
 				 return rootView;

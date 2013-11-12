@@ -83,9 +83,9 @@
     <string name="month">Månad</string>
 
     <!-- Tabbar -->
-    <string name="title_section1">Dag</string>
-    <string name="title_section2">Vecka</string>
-    <string name="title_section3">Månad</string>
+    <string name="title_section1">Day</string>
+    <string name="title_section2">Week</string>
+    <string name="title_section3">Month</string>
     <string name="title_activity_calendar">Månadsvy</string>
 
 </resources>
