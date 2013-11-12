@@ -13,8 +13,9 @@ public final class R {
     public static final class color {
         /**  Färger 
          */
-        public static final int actionbar_text=0x7f060000;
-        public static final int custom_theme_color=0x7f060001;
+        public static final int actionbar_text=0x7f040001;
+        public static final int custom_theme_color=0x7f040002;
+        public static final int pressed_retro=0x7f040000;
     }
     public static final class dimen {
         /**  Default screen margins, per the Android Design guidelines. 
@@ -23,27 +24,55 @@ public final class R {
          screen margins) for sw720dp devices (e.g. 10" tablets) in landscape here.
     
          */
-        public static final int activity_horizontal_margin=0x7f040000;
-        public static final int activity_vertical_margin=0x7f040001;
-        public static final int text_size=0x7f040002;
+        public static final int activity_horizontal_margin=0x7f050000;
+        public static final int activity_vertical_margin=0x7f050001;
+        public static final int text_size=0x7f050002;
     }
     public static final class drawable {
-        public static final int action_about=0x7f020000;
-        public static final int action_help=0x7f020001;
-        public static final int action_settings=0x7f020002;
-        public static final int actionbar_background=0x7f020003;
-        public static final int actionbar_tab_indicator=0x7f020004;
-        public static final int actiontab_background=0x7f020005;
-        public static final int actiontab_background_selected=0x7f020006;
-        public static final int actiontab_background_selected_focused=0x7f020007;
-        public static final int actiontab_background_selected_focused_pressed=0x7f020008;
-        public static final int actiontab_background_selected_nonfocused_pressed=0x7f020009;
-        public static final int actiontab_background_unselected=0x7f02000a;
-        public static final int actiontab_background_unselected_focused=0x7f02000b;
-        public static final int actiontab_background_unselected_focused_pressed=0x7f02000c;
-        public static final int actiontab_background_unselected_nonfocused_pressed=0x7f02000d;
-        public static final int ic_action_search=0x7f02000e;
-        public static final int ic_launcher=0x7f02000f;
+        public static final int ab_background_textured_retro=0x7f020000;
+        public static final int ab_bottom_solid_retro=0x7f020001;
+        public static final int ab_solid_retro=0x7f020002;
+        public static final int ab_stacked_solid_retro=0x7f020003;
+        public static final int ab_texture_tile_retro=0x7f020004;
+        public static final int ab_transparent_retro=0x7f020005;
+        public static final int action_about=0x7f020006;
+        public static final int action_help=0x7f020007;
+        public static final int action_settings=0x7f020008;
+        public static final int actionbar_background=0x7f020009;
+        public static final int actionbar_tab_indicator=0x7f02000a;
+        public static final int actiontab_background=0x7f02000b;
+        public static final int actiontab_background_selected=0x7f02000c;
+        public static final int actiontab_background_selected_focused=0x7f02000d;
+        public static final int actiontab_background_selected_focused_pressed=0x7f02000e;
+        public static final int actiontab_background_selected_nonfocused_pressed=0x7f02000f;
+        public static final int actiontab_background_unselected=0x7f020010;
+        public static final int actiontab_background_unselected_focused=0x7f020011;
+        public static final int actiontab_background_unselected_focused_pressed=0x7f020012;
+        public static final int actiontab_background_unselected_nonfocused_pressed=0x7f020013;
+        public static final int btn_cab_done_default_retro=0x7f020014;
+        public static final int btn_cab_done_retro=0x7f020015;
+        public static final int ic_action_search=0x7f020016;
+        public static final int ic_launcher=0x7f020017;
+        public static final int list_focused_retro=0x7f020018;
+        public static final int menu_dropdown_panel_retro=0x7f020019;
+        public static final int pressed_background_retro=0x7f02001a;
+        public static final int progress_bg_retro=0x7f02001b;
+        public static final int progress_horizontal_retro=0x7f02001c;
+        public static final int progress_primary_retro=0x7f02001d;
+        public static final int progress_secondary_retro=0x7f02001e;
+        public static final int selectable_background_retro=0x7f02001f;
+        public static final int spinner_ab_default_retro=0x7f020020;
+        public static final int spinner_ab_disabled_retro=0x7f020021;
+        public static final int spinner_ab_focused_retro=0x7f020022;
+        public static final int spinner_ab_pressed_retro=0x7f020023;
+        public static final int spinner_background_ab_retro=0x7f020024;
+        public static final int tab_indicator_ab_retro=0x7f020025;
+        public static final int tab_selected_focused_retro=0x7f020026;
+        public static final int tab_selected_pressed_retro=0x7f020027;
+        public static final int tab_selected_retro=0x7f020028;
+        public static final int tab_unselected_focused_retro=0x7f020029;
+        public static final int tab_unselected_pressed_retro=0x7f02002a;
+        public static final int tab_unselected_retro=0x7f02002b;
     }
     public static final class id {
         public static final int action_about=0x7f090007;
@@ -74,35 +103,39 @@ public final class R {
     public static final class string {
         /**  Menyval 
          */
-        public static final int action_about=0x7f050001;
-        public static final int action_help=0x7f050002;
-        public static final int action_search=0x7f050004;
-        public static final int action_settings=0x7f050003;
-        public static final int app_name=0x7f050000;
+        public static final int action_about=0x7f060001;
+        public static final int action_help=0x7f060002;
+        public static final int action_search=0x7f060004;
+        public static final int action_settings=0x7f060003;
+        public static final int app_name=0x7f060000;
         /**  Knappar 
          */
-        public static final int button_calendar=0x7f050007;
-        public static final int button_disappointing=0x7f05000b;
-        public static final int button_display=0x7f05000a;
-        public static final int button_off=0x7f050009;
-        public static final int button_on=0x7f050008;
-        public static final int button_tab=0x7f05000c;
-        public static final int edit_message=0x7f05000d;
-        public static final int hello_world=0x7f050005;
-        public static final int open_date_picker=0x7f050006;
-        public static final int title_activity_calendar=0x7f050014;
-        public static final int title_activity_display_message=0x7f05000f;
+        public static final int button_calendar=0x7f060007;
+        public static final int button_disappointing=0x7f06000b;
+        public static final int button_display=0x7f06000a;
+        public static final int button_off=0x7f060009;
+        public static final int button_on=0x7f060008;
+        public static final int button_tab=0x7f06000c;
+        public static final int edit_message=0x7f06000d;
+        public static final int hello_world=0x7f060005;
+        public static final int open_date_picker=0x7f060006;
+        public static final int title_activity_calendar=0x7f060014;
+        public static final int title_activity_display_message=0x7f06000f;
         /**  Sidotitlar 
          */
-        public static final int title_activity_second=0x7f05000e;
-        public static final int title_activity_tab=0x7f050010;
+        public static final int title_activity_second=0x7f06000e;
+        public static final int title_activity_tab=0x7f060010;
         /**  Tabbar 
          */
-        public static final int title_section1=0x7f050011;
-        public static final int title_section2=0x7f050012;
-        public static final int title_section3=0x7f050013;
+        public static final int title_section1=0x7f060011;
+        public static final int title_section2=0x7f060012;
+        public static final int title_section3=0x7f060013;
     }
     public static final class style {
+        public static final int ActionBar_Solid_Retro=0x7f070008;
+        public static final int ActionBar_Transparent_Retro=0x7f070009;
+        public static final int ActionBarTabStyle_Retro=0x7f07000c;
+        public static final int ActionButton_CloseMode_Retro=0x7f07000f;
         /** 
         Base application theme, dependent on API level. This theme is replaced
         by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
@@ -132,6 +165,8 @@ public final class R {
         /**  the theme applied to the application or activity 
          */
         public static final int CustomActionBarTheme=0x7f070002;
+        public static final int DropDownListView_Retro=0x7f07000b;
+        public static final int DropDownNav_Retro=0x7f07000d;
         /**  ActionBar styles 
          */
         public static final int MyActionBar=0x7f070003;
@@ -144,5 +179,11 @@ public final class R {
         /**  ActionBar title text 
          */
         public static final int MyActionBarTitleText=0x7f070004;
+        public static final int PopupMenu_Retro=0x7f07000a;
+        public static final int ProgressBar_Retro=0x7f07000e;
+        public static final int Theme_Retro=0x7f070007;
+        /**  this style is only referenced in a Light.DarkActionBar based theme 
+         */
+        public static final int Theme_Retro_Widget=0x7f070010;
     }
 }
