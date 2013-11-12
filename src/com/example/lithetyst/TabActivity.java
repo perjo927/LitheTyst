@@ -45,7 +45,7 @@ public class TabActivity extends FragmentActivity implements
 		// Aktivera Actionbar - med tabbar
 		final ActionBar actionBar = getActionBar();
 		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
-		// Logon ska leda hem
+		// TODO: Logon ska leda hem
 		actionBar.setHomeButtonEnabled(true);	
 		// actionBar.hide(); // eller show
 
@@ -91,7 +91,7 @@ public class TabActivity extends FragmentActivity implements
 	}
 	
 	
-	//
+	// TODO: ev. fler ikoner
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 	    // Handle presses on the action bar items
@@ -106,11 +106,14 @@ public class TabActivity extends FragmentActivity implements
        */
 	        case R.id.action_settings_top:
 	            //TODO: välj mellan second och "first" settings
-	        	startSecondSettingsActivity();
+	        	startSettingsActivity();
 	            return true;
 	        case R.id.action_settings:
 	        	startSettingsActivity();
 	            return true;
+	        case R.id.action_settings_b:
+	        	startSecondSettingsActivity();
+	            return true;    
 	        default:
 	            return super.onOptionsItemSelected(item);
 	    }
@@ -224,17 +227,30 @@ public class TabActivity extends FragmentActivity implements
 		    // Switcha enum-värdet, öppna rätt vy/layout till rätt flik
 			switch (currentType) {
 			case DAG:				
-				 rootView = inflater.inflate(R.layout.fragment_tab,container, false);
+				 rootView = inflater.inflate(R.layout.activity_day,container, false);
 				 
-					// TODO: Parsa rätt dag - OM CalendarActivity vill det
-					TextView dateTextView = (TextView) rootView
-					.findViewById(R.id.section_label);
-					dateTextView.setText(chosenDate);				 
+				 // TODO: Parsa rätt dag - OM CalendarActivity vill det
+				 // TODO: Rätt dag finns i statiska variabeln chosenDate
+				 
+				 /*
+				  * 
+				  * 
+				  * 
+				  * 
+				  * 
+				  */
+			 
 				 
 				 return rootView;
 			case VECKA:
-				 // TODO: Ta bort fragment_tab så småningom
+				 // TODO: Ta bort fragment_tab så småningom ***
+				 // TODO: Byt ut mot veckovy
 				 rootView = inflater.inflate(R.layout.fragment_tab,container, false);
+				 
+					TextView dateTextView = (TextView) rootView
+					.findViewById(R.id.section_label);
+					dateTextView.setText("Veckovy ej implementerad!");	
+				 
 				 return rootView;
 			case MÅNAD:
 				 rootView = inflater.inflate(R.layout.activity_calendar,container, false);
@@ -242,21 +258,22 @@ public class TabActivity extends FragmentActivity implements
 				 ///
 				 CalendarView calendarView = (CalendarView) rootView.findViewById(R.id.calendar_view);
 				
-			       calendarView.setOnDateChangeListener(new OnDateChangeListener() {
-			               @Override
-			               public void onSelectedDayChange(CalendarView view,
-			            		   int year, int month, int dayOfMonth) {
+		         calendarView.setOnDateChangeListener(new OnDateChangeListener() {
+		               @Override
+		               public void onSelectedDayChange(CalendarView view,
+		            		   int year, int month, int dayOfMonth) {
 
-			            	   chosenDate = year + " " + month + " " + dayOfMonth;
-			            	   System.out.println("onSelectedDayChange: " + chosenDate);
-			            	   
-			            	   // Byt till dagfliken, rätt datum
-			            	   mViewPager.setCurrentItem(SectionType.DAG.ordinal()); 
-			               }
-			           });					 
+		            	   chosenDate = year + " " + month + " " + dayOfMonth;
+		            	   System.out.println("onSelectedDayChange: " + chosenDate);
+		            	   
+		            	   // Byt till dagfliken, rätt datum
+		            	   mViewPager.setCurrentItem(SectionType.DAG.ordinal()); 
+		               }
+		               });					 
 				 return rootView;
 			default:
-				 // Hit borde vi inte komma
+				 // Hit borde vi inte komma 
+				 // TODO: throw error?
 				 rootView = inflater.inflate(R.layout.activity_calendar,container, false);
 				 return rootView;
 			}
