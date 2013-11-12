@@ -55,8 +55,8 @@
     
     <string name="sync">Sync</string>
     <string name="next">Next</string>
-    <string name="sync_hint">Ical link...</string>
-    <string name="sync_text">Input your ical link below and press sync</string>
+    <string name="sync_hint">Studentgrupp ...</string>
+    <string name="sync_text">Ange din studentgrupp och tryck på "sync"</string>
     
     
     <string name="view_options">View</string>
