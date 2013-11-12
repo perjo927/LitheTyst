@@ -1,5 +1,8 @@
 package com.example.lithetyst;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Locale;
 
 import android.app.ActionBar;
@@ -25,6 +28,10 @@ public class TabActivity extends FragmentActivity implements
 		ActionBar.TabListener {
 	
 	private static String chosenDate = "00-00-00"; // TODO: dagens datum
+	// TODO: Dagens datum
+	private static int chosenYear = 2013;
+	private static int chosenMonth = 11;
+	private static int chosenDay = 12;
     //public final static String YEAR = "com.example.lithetyst.YEAR";
 	
 	// PagerAdapter tillhandahåller Fragment för varje section 
@@ -231,15 +238,21 @@ public class TabActivity extends FragmentActivity implements
 				 
 				 // TODO: Parsa rätt dag - OM CalendarActivity vill det
 				 // TODO: Rätt dag finns i statiska variabeln chosenDate
+					Calendar calendar = Calendar.getInstance();
+					Date date = new Date(chosenYear, chosenMonth, chosenDay);
+					calendar.setTime(date );
+			        String[] days = new String[] { "SUNDAY", "MONDAY", 
+			            		"TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY",
+			            		"SATURDAY" };
+			        String day = days[calendar.get(Calendar.DAY_OF_WEEK)];
 				 
-				 /*
-				  * 
-				  * 
-				  * 
-				  * 
-				  * 
-				  */
-			 
+			        TextView dayTextView = (TextView) rootView
+					.findViewById(R.id.textView2);
+			        dayTextView.setText("Datum: " + chosenYear + "/" 
+					+ chosenMonth + "/" + chosenDay + "(" + day + ")");
+				 
+
+
 				 
 				 return rootView;
 			case VECKA:
@@ -261,10 +274,11 @@ public class TabActivity extends FragmentActivity implements
 		         calendarView.setOnDateChangeListener(new OnDateChangeListener() {
 		               @Override
 		               public void onSelectedDayChange(CalendarView view,
-		            		   int year, int month, int dayOfMonth) {
+		            		   int year, int month, int day) {
 
-		            	   chosenDate = year + " " + month + " " + dayOfMonth;
-		            	   System.out.println("onSelectedDayChange: " + chosenDate);
+		            	   chosenYear = year;
+		            	   chosenMonth = month;
+		            	   chosenDay = day;
 		            	   
 		            	   // Byt till dagfliken, rätt datum
 		            	   mViewPager.setCurrentItem(SectionType.DAG.ordinal()); 
