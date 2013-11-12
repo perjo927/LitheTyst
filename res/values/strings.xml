@@ -8,26 +8,14 @@
     <string name="action_help">Help</string>
     <string name="action_settings">Settings</string>
     <string name="action_search">Search</string>
+    
     <string name="hello_world">Hello world!</string>
-    <string name="open_date_picker">Välj datum</string>
 
     <!-- Knappar -->
-    <string name="button_calendar">iCal</string>
-    <string name="button_on">Ljud på</string>
-    <string name="button_off">Ljud av</string>
-    <string name="button_display">Visa</string>
-    <string name="button_disappointing">Surprise!</string>
     <string name="button_tab">Tabz</string>
-    <string name="edit_message">Redigera</string>
 
     <!-- Sidotitlar -->
-    <string name="title_activity_second">LitHe Tyst SecondActivity</string>
-    <string name="title_activity_display_message">LitHe Tyst Display Message</string>
     <string name="title_activity_tab">LiThe Tyst TabActivity</string>
-
-    <!-- Färger -->
-    <color name="actionbar_text">#FFFFFF</color>
-    <color name="custom_theme_color">#56E6E6</color>
 
     <!-- Tabbar -->
     <string name="title_section1">Dag</string>

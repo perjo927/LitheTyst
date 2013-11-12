@@ -3,95 +3,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" >
-
-    <!-- Gå till kalender-->
-    <!-- 
-    <Button
-        android:id="@+id/button_calendar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/button_calendar"
-        android:onClick="startCalendar"
-        android:textSize="@dimen/text_size" />
- -->
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
-
-        <!-- Skicka meddelande till aktivitet -->
-        <!-- 
-        <Button
-            android:id="@+id/button3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginRight="33dp"
-            android:onClick="sendMessage"
-            android:text="@string/button_display" />
- -->
-        <!-- Redigera text som ska skickas vidare -->
-        <!-- 
-        <EditText
-            android:id="@+id/edit_message"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:hint="@string/edit_message" />
-             -->
-    </RelativeLayout>
-
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
-     
+ 
         <!-- tab-knapp -->      
         <Button
             android:id="@+id/button4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
             android:onClick="startTabActivity"
             android:text="@string/button_tab" />
-
-
-        <!-- unmute-knapp -->
-        <!-- 
-        <Button
-            android:id="@+id/button1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_toRightOf="@+id/button4"
-            android:onClick="unMute"
-            android:text="@string/button_on" />
- -->
-        <!-- mute-knapp -->
-        <!-- 
-        <Button
-            android:id="@+id/button2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_toRightOf="@+id/button1"
-            android:onClick="mute"
-            android:text="@string/button_off" />
- -->
-        <!-- Meningslös knapp -->
-        <!-- 
-        <Button
-            android:id="@+id/button5"
-            style="?android:attr/buttonStyleSmall"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentTop="true"
-            android:onClick="startSecondActivity"
-            android:text="@string/button_disappointing" />
-             -->
-    </RelativeLayout>
 
     
 

@@ -7,21 +7,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".CalendarActivity" >
-    
-    <!-- Välj datum  Välj datum, tillfälligt borttagen (TODO: ta bort?)
-    <Button
-        android:id="@+id/date_picker_button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/open_date_picker"
-        android:textSize="@dimen/text_size" />
-	-->
-	
-    <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent" >
-
+    tools:context=".CalendarActivity" >   
 
 		<!-- Visa Kalendern -->
 	    <CalendarView
@@ -29,6 +15,5 @@
 	        android:layout_width="match_parent"
 	        android:layout_height="match_parent" />
 
-    </RelativeLayout>
 
 </LinearLayout>

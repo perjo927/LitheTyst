@@ -9,7 +9,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-//import android.widget.EditText;
+
 
 
 public class MainActivity extends Activity {
@@ -25,33 +25,6 @@ public class MainActivity extends Activity {
 		 
 	}
 
-
-	/// onClick-händelser! ///
-
-	/*
-	// button onclick = sendmessage! 
-	public void sendMessage(View view) {
-		// Vad vill vi starta?
-	    Intent intent = new Intent(this, DisplayMessageActivity.class);
-	    // Hitta redigeringsrutan
-	    EditText editText = (EditText) findViewById(R.id.edit_message);
-	    // Fånga texten
-	    String message = editText.getText().toString();
-	    // Skicka vidare till nya aktivitet
-	    intent.putExtra(EXTRA_MESSAGE, message);
-	    // Starta ny aktivitet
-	    startActivity(intent);
-	}
-	*/
-	/// button onclick = startTabActivity! 
-	/*
-	public void startCalendar(View view) {
-	    Intent intent = new Intent(this, CalendarActivity.class);
-	    startActivity(intent);
-	}
-	*/
-	
-	
 	
 	//// FLIKVY ////
 	public void startTabActivity(View view) {
@@ -60,30 +33,7 @@ public class MainActivity extends Activity {
 	    intent.putExtra(EXTRA_MESSAGE, message);
 	    startActivity(intent);
 	}
-	////
 	
-	/** på/av */
-	/*
-	public void unMute(View view) {
-		//vc.mute();		
-		System.out.println("unmute");
-	}
-	public void mute(View view) {
-		//vc.restoreVolume();
-		System.out.println("mute");
-	}
-	*/
-	/*
-    // Meningslös aktivitet
-    public void startSecondActivity(View view) {
-    	   Intent intent = new Intent(this, SecondActivity.class);
-    	   intent.putExtra("BUTTON NUMBER", 1337);
-    	   startActivity(intent);
-    	}  
-    	*/
-	/// slut onClick ///
-
-    
 	// Main-meny
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
