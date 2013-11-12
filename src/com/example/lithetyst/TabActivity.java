@@ -1,8 +1,10 @@
 package com.example.lithetyst;
 
 import java.util.Locale;
+
 import android.app.ActionBar;
 import android.app.FragmentTransaction;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -11,6 +13,8 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CalendarView;
@@ -78,13 +82,51 @@ public class TabActivity extends FragmentActivity implements
 		mViewPager.setCurrentItem(defaultTab);
 	}
 
-	// TODO: Rätt meny
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-		// Gör menyn redo för denna vyn
-		getMenuInflater().inflate(R.menu.tab, menu);
-		return true;
+	    // Inflate the menu items for use in the action bar
+	    MenuInflater inflater = getMenuInflater();
+	    inflater.inflate(R.menu.menu, menu);
+	    return super.onCreateOptionsMenu(menu);
 	}
+	
+	
+	//
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+	    // Handle presses on the action bar items
+	    switch (item.getItemId()) {
+	    /*
+        	case R.id.action_about:
+        		System.out.println("About");
+        		return true;
+        	case R.id.action_help:
+        		System.out.println("Help");
+        		return true;
+       */
+	        case R.id.action_settings_top:
+	            //TODO: välj mellan second och "first" settings
+	        	startSecondSettingsActivity();
+	            return true;
+	        case R.id.action_settings:
+	        	startSettingsActivity();
+	            return true;
+	        default:
+	            return super.onOptionsItemSelected(item);
+	    }
+	}
+	
+	public void startSettingsActivity() {
+		//
+		Intent intent = new Intent(this, SettingsMenuActivity.class);
+		startActivity(intent);
+	}
+	public void startSecondSettingsActivity() {
+		//
+		Intent intent = new Intent(this, SecondSettingsActivity.class);
+		startActivity(intent);
+	}
+	
 
 	@Override
 	public void onTabSelected(ActionBar.Tab tab,

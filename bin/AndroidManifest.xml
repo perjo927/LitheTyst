@@ -1,8 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.lithetyst"
+    android:configChanges="locale"
     android:versionCode="1"
     android:versionName="1.0" >
+    
+    <uses-permission android:name="android.permission.VIBRATE" />
+
+    <supports-screens
+        android:anyDensity="true"
+        android:largeScreens="true"
+        android:normalScreens="true"
+        android:smallScreens="true" />
+    
 
     <uses-sdk
         android:minSdkVersion="14"
@@ -14,8 +24,7 @@
         android:label="@string/app_name"
         android:theme="@style/Theme.Retro" >
 
-        <!-- Vilka sidor ska finnas -->
-        <!-- Huvudsida -->
+
         <activity
             android:name="com.example.lithetyst.MainActivity"
             android:label="@string/app_name" >
@@ -27,6 +36,23 @@
         </activity>
 
 
+		<activity
+            android:name="com.example.lithetyst.SettingsActivity"
+            android:label="@string/title_activity_settings" >
+        </activity>
+        <activity
+            android:name="com.example.lithetyst.SecondSettingsActivity"
+            android:label="@string/title_activity_second_settings" >
+        </activity>
+        <activity
+            android:name="com.example.lithetyst.SettingsMenuActivity"
+            android:label="@string/title_activity_settings_menu" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.lithetyst.MainActivity" />
+        </activity> 
+        
+        
         <!-- Tab-vy -->
         <activity
             android:name="com.example.lithetyst.TabActivity"

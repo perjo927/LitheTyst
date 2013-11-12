@@ -4,14 +4,5 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
  
-        <!-- tab-knapp -->      
-        <Button
-            android:id="@+id/button4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="startTabActivity"
-            android:text="@string/button_tab" />
-
     
-
 </LinearLayout>
