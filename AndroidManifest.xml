@@ -6,6 +6,8 @@
     android:versionName="1.0" >
     
     <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.INTERNET" >
+    </uses-permission>
 
     <supports-screens
         android:anyDensity="true"
@@ -52,7 +54,18 @@
                 android:value="com.example.lithetyst.MainActivity" />
         </activity> 
         
-        
+         <activity
+            android:name="com.example.lithetyst.SyncActivity"
+            android:label="@string/title_activity_sync" >
+        </activity>
+        <service android:name=".MuteService"
+                 android:enabled="true" />
+        <service android:name=".UnmuteService"
+                 android:enabled="true" />
+         
+	    <receiver android:name=".MuteReceiver"/>
+	    <receiver android:name=".UnmuteReceiver"/>
+
         <!-- Tab-vy -->
         <activity
             android:name="com.example.lithetyst.TabActivity"
