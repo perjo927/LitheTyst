@@ -249,7 +249,7 @@ public class TabActivity extends FragmentActivity implements
 			        TextView dayTextView = (TextView) rootView
 					.findViewById(R.id.textView2);
 			        dayTextView.setText("Datum: " + chosenYear + "/" 
-					+ chosenMonth + "/" + chosenDay + "(" + day + ")");
+					+ chosenMonth + "/" + chosenDay + "\n" + "(" + day + ")");
 				 
 
 

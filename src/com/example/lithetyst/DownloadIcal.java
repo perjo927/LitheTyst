@@ -7,11 +7,42 @@ import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
 
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.select.Elements;
+
 import android.content.Context;
 import android.os.StrictMode;
 
 public class DownloadIcal 
 {
+	
+	public static String get_ical_link(String group)
+	{
+		if (android.os.Build.VERSION.SDK_INT > 9) 
+		{
+		    StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+		    StrictMode.setThreadPolicy(policy);
+		}
+		try {
+			String url = "https://se.timeedit.net/web/liu/db1/schema/s/s.html?tab=3&object=Group_" + group + "&type=studentgroup&p=0.n%2C12.n";
+			Document document = Jsoup.connect(url).get();
+			
+			Elements ns = document.select("a#icalurl2");
+			
+			String ical_link = ns.get(0).attributes().get("href");
+			return ical_link;
+		}
+		catch (MalformedURLException e) 
+		{
+			return "fail_url";
+		}
+		catch (IOException e) 
+		{
+			return "fail_io";
+		} 
+	}
+	
 	
 	public static boolean save_file(String url_string,Context ctx)
 	{

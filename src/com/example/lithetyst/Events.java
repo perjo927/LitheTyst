@@ -35,7 +35,8 @@ public class Events
 		    while ((line = inputReader.readLine()) != null) 
 		    {
 		        data += line;
-		    } 
+		    }
+		    inputReader.close();
 		    
 		    String pattern = "([A-Z-]+:)(.*)";
 		    String last_entry = null;
@@ -97,7 +98,24 @@ public class Events
 		    			}
 		    			else if (type.equals("VEVENT"))
 		    			{
-		    				events.add(event);
+		    				boolean inserted = false;
+		    				//events.add(event);
+		    				for (int y = 0; y < events.size(); y++)
+		    				{
+		    					long event1 = Long.parseLong(event.get("start-year")+event.get("start-month")+event.get("start-day")+event.get("start-hour")+event.get("start-minute"));
+		    					long event2 = Long.parseLong(events.get(y).get("start-year")+events.get(y).get("start-month")+events.get(y).get("start-day")+events.get(y).get("start-hour")+events.get(y).get("start-minute"));
+		    					
+		    					if (event1 < event2)
+		    					{
+		    						events.add(y,event);
+		    						inserted = true;
+		    						break;
+		    					}
+		    				}
+		    				if (!inserted)
+		    				{
+		    					events.add(event);
+		    				}
 		    			}
 		    		}
 		    	}

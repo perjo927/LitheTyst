@@ -8,6 +8,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 
+
 public class SyncActivity extends Activity
 {
 
@@ -37,16 +38,19 @@ public class SyncActivity extends Activity
 	{
 		   sync_button.setOnClickListener(new OnClickListener() {
 		            public void onClick(View v) 
-		            {          	
-						sync();		            
+		            {
+						sync();
+				
 		            }
 		        });	
 	}
 	
-	private void sync() 
+	private void sync()
 	{
-		String url = link_input.getText().toString(); // url gotten from the text input
-		if (DownloadIcal.save_file(url,getBaseContext()))
+		String group = link_input.getText().toString(); // url gotten from the text input
+		String ical_link = DownloadIcal.get_ical_link(group);
+		
+		if (DownloadIcal.save_file(ical_link,getBaseContext()))
 		{
 			System.out.println("Success");
 		}
