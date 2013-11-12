@@ -15,7 +15,7 @@ public class MuteManager
 		ctx = _ctx;
 	}
 	
-	public void mute(String year, String month, String day, String hour, String minute, String seconds)
+	public void mute(String year, String month, String day, String hour, String minute)
 	{
 		PendingIntent pendingIntent;
 		Calendar calendar = Calendar.getInstance();
@@ -25,7 +25,6 @@ public class MuteManager
         calendar.set(Calendar.DAY_OF_MONTH, Integer.parseInt(day));
         calendar.set(Calendar.HOUR_OF_DAY, Integer.parseInt(hour));
         calendar.set(Calendar.MINUTE, Integer.parseInt(minute));
-        calendar.set(Calendar.SECOND, Integer.parseInt(seconds));
        
         Intent myIntent = new Intent(ctx, MuteReceiver.class);
         pendingIntent = PendingIntent.getBroadcast(ctx, 0, myIntent,0);
@@ -33,7 +32,7 @@ public class MuteManager
         alarmManager.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pendingIntent);
 	}
 	
-	public void unmute(String year, String month, String day, String hour, String minute, String seconds)
+	public void unmute(String year, String month, String day, String hour, String minute)
 	{
 		PendingIntent pendingIntent;
 		Calendar calendar = Calendar.getInstance();
@@ -43,7 +42,6 @@ public class MuteManager
         calendar.set(Calendar.DAY_OF_MONTH, Integer.parseInt(day));
         calendar.set(Calendar.HOUR_OF_DAY, Integer.parseInt(hour));
         calendar.set(Calendar.MINUTE, Integer.parseInt(minute));
-        calendar.set(Calendar.SECOND, Integer.parseInt(seconds));
        
         Intent myIntent = new Intent(ctx, UnmuteReceiver.class);
         pendingIntent = PendingIntent.getBroadcast(ctx, 0, myIntent,0);

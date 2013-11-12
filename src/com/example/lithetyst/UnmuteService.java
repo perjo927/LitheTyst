@@ -27,7 +27,6 @@ public class UnmuteService extends Service
    @Override
    public void onStart(Intent intent, int startId)
    {
-	   System.out.println(2);
       vc.unmute();
    }
  
