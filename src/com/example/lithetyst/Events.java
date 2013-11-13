@@ -67,7 +67,7 @@ public class Events
 		    			event.put("start-year",time.substring(0,4));
 		    			event.put("start-month",time.substring(4,6));
 		    			event.put("start-day",time.substring(6,8));
-		    			event.put("start-hour",time.substring(9,11));
+		    			event.put("start-hour",Integer.toString(Integer.parseInt(time.substring(9,11))+1));
 		    			event.put("start-minute",time.substring(11,13));
 		    		}
 		    		else if (id.equals("DTEND:"))
@@ -76,7 +76,7 @@ public class Events
 		    			event.put("end-year",time.substring(0,4));
 		    			event.put("end-month",time.substring(4,6));
 		    			event.put("end-day",time.substring(6,8));
-		    			event.put("end-hour",time.substring(9,11));
+		    			event.put("end-hour",Integer.toString(Integer.parseInt(time.substring(9,11))+1));
 		    			event.put("end-minute",time.substring(11,13));
 		    		}
 		    		else if (id.equals("SUMMARY:"))

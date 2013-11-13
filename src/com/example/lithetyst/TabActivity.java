@@ -1,11 +1,14 @@
 package com.example.lithetyst;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
+import android.annotation.SuppressLint;
 import android.app.ActionBar;
+import android.app.ActionBar.LayoutParams;
 import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
@@ -21,8 +24,12 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CalendarView;
+import android.widget.TableLayout;
+import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.CalendarView.OnDateChangeListener;
+import java.util.HashMap;
+import java.util.Map;
 
 public class TabActivity extends FragmentActivity implements
 		ActionBar.TabListener {
@@ -30,15 +37,16 @@ public class TabActivity extends FragmentActivity implements
 	private static String chosenDate = "00-00-00"; // TODO: dagens datum
 	// TODO: Dagens datum
 	private static int chosenYear = 2013;
-	private static int chosenMonth = 11;
+	private static int chosenMonth = 10;
 	private static int chosenDay = 12;
     //public final static String YEAR = "com.example.lithetyst.YEAR";
 	
-	// PagerAdapter tillhandahåller Fragment för varje section 
+	// PagerAdapter tillhandahï¿½ller Fragment fï¿½r varje section 
 	private SectionsPagerAdapter mSectionsPagerAdapter;
 
-	// ViewPager är värd för innehållet i varje section 
-	private static ViewPager mViewPager;  
+	// ViewPager ï¿½r vï¿½rd fï¿½r innehï¿½llet i varje section 
+	private static ViewPager mViewPager;
+	private static Map<Integer, Integer> schedule_rows;
     
 
 	// Skapa tabbsidan
@@ -57,16 +65,36 @@ public class TabActivity extends FragmentActivity implements
 		// actionBar.hide(); // eller show
 
 		// Initiera adaptern som vi deklarerade ovan som returnerar ett
-		// Fragment för vart och ett av de tre sections som vi har (dag, vecka, månad).
+		// Fragment fï¿½r vart och ett av de tre sections som vi har (dag, vecka, mï¿½nad).
 		mSectionsPagerAdapter = 
 				new SectionsPagerAdapter(getSupportFragmentManager());
+		
+		
+		schedule_rows = new HashMap<Integer, Integer>();
+		schedule_rows.put(8, R.id.tableRow1);
+		schedule_rows.put(9, R.id.tableRow2);
+		schedule_rows.put(10, R.id.tableRow3);
+		schedule_rows.put(11, R.id.tableRow4);
+		schedule_rows.put(12, R.id.tableRow5);
+		schedule_rows.put(13, R.id.tableRow6);
+		schedule_rows.put(14, R.id.tableRow7);
+		schedule_rows.put(15, R.id.tableRow8);
+		schedule_rows.put(16, R.id.tableRow9);
+		schedule_rows.put(17, R.id.tableRow10);
+		schedule_rows.put(18, R.id.tableRow11);
+		schedule_rows.put(19, R.id.tableRow12);
+		schedule_rows.put(20, R.id.tableRow13);
+		schedule_rows.put(21, R.id.tableRow14);
+		
+		
+		
 
-		// Fånga viewPager och knyt den till Adapter.
+		// Fï¿½nga viewPager och knyt den till Adapter.
 		mViewPager = (ViewPager) findViewById(R.id.pager);
 		mViewPager.setAdapter(mSectionsPagerAdapter);
 
-		// När man swipar mellan olika sections, välj rätt tab
-		// Det går också bra att trycka på  tabbarna - ActionBar.Tab#select() 
+		// Nï¿½r man swipar mellan olika sections, vï¿½lj rï¿½tt tab
+		// Det gï¿½r ocksï¿½ bra att trycka pï¿½  tabbarna - ActionBar.Tab#select() 
 		mViewPager
 				.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
 					@Override
@@ -75,16 +103,16 @@ public class TabActivity extends FragmentActivity implements
 					}
 				});
 
-		// For varje section (dag, vecka, månad), lägg till en tab till vår action bar.
+		// For varje section (dag, vecka, mï¿½nad), lï¿½gg till en tab till vï¿½r action bar.
 		for (int i = 0; i < mSectionsPagerAdapter.getCount(); i++) {
 			// Skapa en tab med text som motsvarar titeln som definierats av adaptern
-			// Ange för TabListener vilken acitivity vi är inne i  (med nyckelordet this).
+			// Ange fï¿½r TabListener vilken acitivity vi ï¿½r inne i  (med nyckelordet this).
 			actionBar.addTab(actionBar.newTab()
 					.setText(mSectionsPagerAdapter.getPageTitle(i))
 					.setTabListener(this));
 		}
 		// TODO:
-		// Sätt static defaulttab BEROENDE PÅ SETTINGS!!!
+		// Sï¿½tt static defaulttab BEROENDE Pï¿½ SETTINGS!!!
 		int defaultTab = 2;
 		mViewPager.setCurrentItem(defaultTab);
 	}
@@ -112,7 +140,7 @@ public class TabActivity extends FragmentActivity implements
         		return true;
        */
 	        case R.id.action_settings_top:
-	            //TODO: välj mellan second och "first" settings
+	            //TODO: vï¿½lj mellan second och "first" settings
 	        	startSettingsActivity();
 	            return true;
 	        case R.id.action_settings:
@@ -141,7 +169,7 @@ public class TabActivity extends FragmentActivity implements
 	@Override
 	public void onTabSelected(ActionBar.Tab tab,
 			FragmentTransaction fragmentTransaction) {
-		// När vi valt en tab, se till att byta vy med ViewPager.
+		// Nï¿½r vi valt en tab, se till att byta vy med ViewPager.
 		mViewPager.setCurrentItem(tab.getPosition());
 	}
 
@@ -167,7 +195,7 @@ public class TabActivity extends FragmentActivity implements
 		@Override
 		public Fragment getItem(int position) {
 			// getItem skapar en instans av ett Fragment 
-			// för den givna sidan som användaren valt.
+			// fï¿½r den givna sidan som anvï¿½ndaren valt.
 			// Returnera ett CalendarSectionFragment (som definieras nedan)
 			// med sidonumret som argument.
 			Fragment fragment = new CalendarSectionFragment();
@@ -179,7 +207,7 @@ public class TabActivity extends FragmentActivity implements
 
 		@Override
 		public int getCount() {
-			// Visa 3 sidor totalt: dag, vecka, månad
+			// Visa 3 sidor totalt: dag, vecka, mï¿½nad
 			return 3;
 		}
 		
@@ -188,11 +216,11 @@ public class TabActivity extends FragmentActivity implements
 					getString(R.string.title_section1), 
 					getString(R.string.title_section2), 
 					getString(R.string.title_section3) };
-			// dag, vecka, månad
+			// dag, vecka, mï¿½nad
 			return sectionTitles[pos];
 		}
 
-		// Namnge tabbarna/flikarna, med stora bokstäver, hämta från strings.xml
+		// Namnge tabbarna/flikarna, med stora bokstï¿½ver, hï¿½mta frï¿½n strings.xml
 		@Override
 		public CharSequence getPageTitle(int position) {
 			Locale l = Locale.getDefault();
@@ -210,8 +238,9 @@ public class TabActivity extends FragmentActivity implements
 
 	// TODO	
 	// Ett Fragment representerar en section i appen	 
+	@SuppressLint("ResourceAsColor")
 	public static class CalendarSectionFragment extends Fragment {
-		// Fragmentets argument som representerar rubriken för dess section 
+		// Fragmentets argument som representerar rubriken fï¿½r dess section 
 		public static final String ARG_SECTION_TITLE = "section_title";
 		private static enum SectionType { DAY, WEEK, MONTH; } // Flikar/tabbar
 		
@@ -221,42 +250,82 @@ public class TabActivity extends FragmentActivity implements
 		}
 
 		// Skapa vyn
+		@SuppressWarnings("deprecation")
 		@Override
 		public View onCreateView(LayoutInflater inflater, ViewGroup container,	
 				Bundle savedInstanceState) {	    
 			
 			View rootView; // ska fyllas och returneras
 
-			// Kolla vilken tab vi ska öppna
+			// Kolla vilken tab vi ska ï¿½ppna
 			String chosenTab = getArguments().getString(ARG_SECTION_TITLE);
-			// Översätt strängen till ett enumvärde
+			// ï¿½versï¿½tt strï¿½ngen till ett enumvï¿½rde
 		    SectionType currentType = SectionType.valueOf(chosenTab.toUpperCase(Locale.getDefault()));
-		    // Switcha enum-värdet, öppna rätt vy/layout till rätt flik
+		    // Switcha enum-vï¿½rdet, ï¿½ppna rï¿½tt vy/layout till rï¿½tt flik
 			switch (currentType) {
-			case DAY:				
-				 rootView = inflater.inflate(R.layout.activity_day,container, false);
-				 
-				 // TODO: Parsa rätt dag - OM CalendarActivity vill det
-				 // TODO: Rätt dag finns i statiska variabeln chosenDate
-					Calendar calendar = Calendar.getInstance();
-					Date date = new Date(chosenYear, chosenMonth, chosenDay);
-					calendar.setTime(date );
-			        String[] days = new String[] { "SUNDAY", "MONDAY", 
+			case DAY:
+				
+				rootView = inflater.inflate(R.layout.activity_day,container, false);
+				Events event_handler = new Events();
+				ArrayList< Map<String, String> > events = event_handler.get_events(rootView.getContext());
+				ArrayList<TableRow> tables = new ArrayList<TableRow>();
+				TableRow.LayoutParams params = new TableRow.LayoutParams(LayoutParams.WRAP_CONTENT,LayoutParams.FILL_PARENT);
+				
+				for (int i = 0; i < events.size(); i++)
+				{
+					Map <String, String> event = events.get(i);
+					if (event.get("start-year").equals(Integer.toString(chosenYear)) && 
+						event.get("start-month").equals(Integer.toString(chosenMonth+1)) && 
+						event.get("start-day").equals(Integer.toString(chosenDay)))
+					{
+						System.out.println("Ny event");
+						tables.clear();
+						Integer hours = Integer.parseInt(event.get("end-hour")) - Integer.parseInt(event.get("start-hour"));
+						for (int y = 0; y < hours; y++)
+						{
+							tables.add((TableRow) rootView.findViewById( schedule_rows.get( Integer.parseInt(event.get("start-hour")) +y )));
+						}
+						
+						TextView info = new TextView(rootView.getContext());
+						
+						info.setText(event.get("summary"));
+						info.setBackgroundResource(R.color.redorange);
+						info.setLayoutParams(params);
+						tables.get(0).addView(info);
+						
+						for (int y = 1; y < tables.size(); y++)
+						{
+							TextView block = new TextView(rootView.getContext());
+							block.setBackgroundResource(R.color.redorange);
+							block.setLayoutParams(params);
+							
+							tables.get(y).addView(block);
+						}
+					}
+				
+				}
+						
+				
+
+				 // TODO: Parsa rï¿½tt dag - OM CalendarActivity vill det
+				 // TODO: Rï¿½tt dag finns i statiska variabeln chosenDate
+				Calendar calendar = Calendar.getInstance();
+				Date date = new Date(chosenYear, chosenMonth, chosenDay);
+				calendar.setTime(date );
+			    String[] days = new String[] { "SUNDAY", "MONDAY", 
 			            		"TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY",
 			            		"SATURDAY" };
-			        String day = days[calendar.get(Calendar.DAY_OF_WEEK)];
+			    String day = days[calendar.get(Calendar.DAY_OF_WEEK)];
 				 
-			        TextView dayTextView = (TextView) rootView
-					.findViewById(R.id.textView2);
-			        dayTextView.setText("Datum: " + chosenYear + "/" 
-					+ chosenMonth + "/" + chosenDay + "\n" + "(" + day + ")");
+			    TextView dayTextView = (TextView) rootView.findViewById(R.id.textView2);
+			    dayTextView.setText("Datum: " + chosenYear + "/" + chosenMonth + "/" + chosenDay + "\n" + "(" + day + ")");
 				 
 
 
 				 
 				 return rootView;
 			case WEEK:
-				 // TODO: Ta bort fragment_tab så småningom ***
+				 // TODO: Ta bort fragment_tab sï¿½ smï¿½ningom ***
 				 // TODO: Byt ut mot veckovy
 				 rootView = inflater.inflate(R.layout.fragment_tab,container, false);
 				 
@@ -280,7 +349,7 @@ public class TabActivity extends FragmentActivity implements
 		            	   chosenMonth = month;
 		            	   chosenDay = day;
 		            	   
-		            	   // Byt till dagfliken, rätt datum
+		            	   // Byt till dagfliken, rï¿½tt datum
 		            	   mViewPager.setCurrentItem(SectionType.DAY.ordinal()); 
 		               }
 		               });					 

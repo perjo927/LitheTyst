@@ -35,6 +35,7 @@ public final class R {
          */
         public static final int activity_horizontal_margin=0x7f050000;
         public static final int activity_vertical_margin=0x7f050001;
+        public static final int te=0x7f050002;
     }
     public static final class drawable {
         public static final int ab_background_textured_retro=0x7f020000;
