@@ -30,7 +30,7 @@ public class SettingsMenuActivity extends Activity {
 	
 	private Spinner spinner1, spinner2;
 	private ToggleButton togglebutton;
-	private Button btnSubmit;
+	//private Button btnSubmit;
 	
 	 private TextView settings, view_options, vibration_options, language, edit;	
 	 private Locale myLocale;
@@ -104,32 +104,33 @@ public class SettingsMenuActivity extends Activity {
 		spinner1 = (Spinner) findViewById(R.id.spinner1);
 		spinner2 = (Spinner) findViewById(R.id.spinner2);
 		togglebutton = (ToggleButton) findViewById(R.id.togglebutton);
-		btnSubmit = (Button) findViewById(R.id.btnSubmit);
-	 
-		btnSubmit.setOnClickListener(new OnClickListener() {
-	
-		  public void onClick(View v) {
-	 
-		    Toast.makeText(SettingsMenuActivity.this,
-			"OnClickListener : " + 
-	                "\nSpinner 1 : "+ String.valueOf(spinner1.getSelectedItem()) +
-	                "\nToggle : " + (togglebutton.isChecked()) + 
-	                "\nSpinner 2 : "+ String.valueOf(spinner2.getSelectedItem()),
-				Toast.LENGTH_SHORT).show();
-		    
-		   /* ***** För att ändra språk - ej klart
-		    String lang = "";
-		    if (String.valueOf(spinner1.getSelectedItem()).equals("Engelska")){
-		    	lang = "en";
-		    	changeLang(lang);
-		    }
-		    else if (String.valueOf(spinner1.getSelectedItem()).equals("Svenska")){
-		    	lang = "sv";
-		    	changeLang(lang);
-		    } */
-		  }
-	 
-		});
+		//btnSubmit = (Button) findViewById(R.id.btnSubmit);
+//	 
+//		btnSubmit.setOnClickListener(new OnClickListener() {
+//	
+//		  public void onClick(View v) {
+//	 
+//		    Toast.makeText(SettingsMenuActivity.this,
+//			"OnClickListener : " + 
+//	                "\nSpinner 1 : "+ String.valueOf(spinner1.getSelectedItem()) +
+//	                "\nToggle : " + (togglebutton.isChecked()) + 
+//	                "\nSpinner 2 : "+ String.valueOf(spinner2.getSelectedItem()),
+//				Toast.LENGTH_SHORT).show();
+//		    
+//		   /* ***** För att ändra språk - ej klart
+//		    String lang = "";
+//		    if (String.valueOf(spinner1.getSelectedItem()).equals("Engelska")){
+//		    	lang = "en";
+//		    	changeLang(lang);
+//		    }
+//		    else if (String.valueOf(spinner1.getSelectedItem()).equals("Svenska")){
+//		    	lang = "sv";
+//		    	changeLang(lang);
+//		    } */
+//		  }
+//	 
+//		});
+
 	  }
 	  
 	  public void onToggleClicked(View view) {	  

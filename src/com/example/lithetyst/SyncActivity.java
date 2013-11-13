@@ -2,6 +2,7 @@ package com.example.lithetyst;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -10,6 +11,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 
 public class SyncActivity extends Activity
@@ -75,10 +77,19 @@ public class SyncActivity extends Activity
 		
 		if (DownloadIcal.save_file(ical_link,getBaseContext()))
 		{
+			startTabActivity();
 			System.out.println("Success");
 		}
 		else
 		{
+			// TODO:
+			Context context = getApplicationContext();
+			CharSequence text = "Kunde inte hitta schemat!";
+			int duration = Toast.LENGTH_SHORT;
+
+			Toast toast = Toast.makeText(context, text, duration);
+			toast.show();
+			
 			System.out.println("Failed");
 		}
 	}
