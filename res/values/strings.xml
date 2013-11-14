@@ -34,11 +34,11 @@
         <item>Engelska</item>
     </string-array>
 
-    <string name="edit">Lägg till/ändra schema</string>
+    <string name="edit">Ändra schema</string>
     <string name="submit">Utför</string>
     <string name="eight">08.00</string>
     <string name="nine">09.00</string>
-    <string name="the_day">Dagen the day</string>
+    <string name="the_day"></string>
     <string name="ten">10.00</string>
     <string name="eleven">11.00</string>
     <string name="twelve">12.00</string>
@@ -69,7 +69,7 @@
     <string name="view_options_sve">Vy</string>
     <string name="views_prompt">Välj vy</string>
 
-    <string name="edit_schedule">Lägg till/ändra schema</string>
+    <string name="edit_schedule">Ändra schema</string>
     
     <!-- Sidotitlar -->
     <string name="title_activity_sync">LiTHe Tyst: SyncActivity</string>
@@ -80,12 +80,12 @@
     
     <string name="day">Dag</string>
     <string name="week">Vecka</string>
-    <string name="month">Månad</string>
+    <string name="month">Manad</string>
 
     <!-- Tabbar -->
-    <string name="title_section1">Day</string>
-    <string name="title_section2">Week</string>
-    <string name="title_section3">Month</string>
-    <string name="title_activity_calendar">Månadsvy</string>
+    <string name="title_section1">Dag</string>
+    <string name="title_section2">Vecka</string>
+    <string name="title_section3">Manad</string>
+    <string name="title_activity_calendar">Manadsvy</string>
 
 </resources>

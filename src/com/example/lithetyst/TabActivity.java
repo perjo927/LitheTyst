@@ -17,6 +17,7 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.text.format.Time;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -28,18 +29,17 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.CalendarView.OnDateChangeListener;
+
 import java.util.HashMap;
 import java.util.Map;
 
 public class TabActivity extends FragmentActivity implements
 		ActionBar.TabListener {
 	
-	private static String chosenDate = "00-00-00"; // TODO: dagens datum
-	// TODO: Dagens datum
-	private static int chosenYear = 2013;
-	private static int chosenMonth = 10;
-	private static int chosenDay = 12;
-    //public final static String YEAR = "com.example.lithetyst.YEAR";
+	// Dagens datum	, eller valbart
+	private static int chosenYear;
+	private static int chosenMonth;
+	private static int chosenDay; 
 	
 	// PagerAdapter tillhandah�ller Fragment f�r varje section 
 	private SectionsPagerAdapter mSectionsPagerAdapter;
@@ -50,9 +50,17 @@ public class TabActivity extends FragmentActivity implements
     
 
 	// Skapa tabbsidan
+	@SuppressLint("UseSparseArrays")
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		
+		Time today = new Time(Time.getCurrentTimezone());
+		today.setToNow();	
+		
+		chosenYear = today.year;
+		chosenMonth = today.month;
+		chosenDay = today.monthDay;
 		
 		// Root-vyn/layout
 		setContentView(R.layout.activity_tab);
@@ -95,6 +103,7 @@ public class TabActivity extends FragmentActivity implements
 
 		// N�r man swipar mellan olika sections, v�lj r�tt tab
 		// Det g�r ocks� bra att trycka p�  tabbarna - ActionBar.Tab#select() 
+		
 		mViewPager
 				.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
 					@Override
@@ -102,7 +111,7 @@ public class TabActivity extends FragmentActivity implements
 						actionBar.setSelectedNavigationItem(position);
 					}
 				});
-
+		 
 		// For varje section (dag, vecka, m�nad), l�gg till en tab till v�r action bar.
 		for (int i = 0; i < mSectionsPagerAdapter.getCount(); i++) {
 			// Skapa en tab med text som motsvarar titeln som definierats av adaptern
@@ -191,7 +200,7 @@ public class TabActivity extends FragmentActivity implements
 		public SectionsPagerAdapter(FragmentManager fm) {
 			super(fm);
 		}
-
+		
 		@Override
 		public Fragment getItem(int position) {
 			// getItem skapar en instans av ett Fragment 
@@ -242,7 +251,7 @@ public class TabActivity extends FragmentActivity implements
 	public static class CalendarSectionFragment extends Fragment {
 		// Fragmentets argument som representerar rubriken f�r dess section 
 		public static final String ARG_SECTION_TITLE = "section_title";
-		private static enum SectionType { DAY, WEEK, MONTH; } // Flikar/tabbar
+		private static enum SectionType { DAG, VECKA, MANAD; } // Flikar/tabbar
 		
 		// konstruktor
 		public CalendarSectionFragment() {
@@ -263,7 +272,7 @@ public class TabActivity extends FragmentActivity implements
 		    SectionType currentType = SectionType.valueOf(chosenTab.toUpperCase(Locale.getDefault()));
 		    // Switcha enum-v�rdet, �ppna r�tt vy/layout till r�tt flik
 			switch (currentType) {
-			case DAY:
+			case DAG:
 				
 				rootView = inflater.inflate(R.layout.activity_day,container, false);
 				Events event_handler = new Events();
@@ -275,7 +284,7 @@ public class TabActivity extends FragmentActivity implements
 				{
 					Map <String, String> event = events.get(i);
 					if (event.get("start-year").equals(Integer.toString(chosenYear)) && 
-						event.get("start-month").equals(Integer.toString(chosenMonth+1)) && 
+						event.get("start-month").equals(Integer.toString(chosenMonth)) && 
 						event.get("start-day").equals(Integer.toString(chosenDay)))
 					{
 						System.out.println("Ny event");
@@ -312,19 +321,19 @@ public class TabActivity extends FragmentActivity implements
 				Calendar calendar = Calendar.getInstance();
 				Date date = new Date(chosenYear, chosenMonth, chosenDay);
 				calendar.setTime(date );
-			    String[] days = new String[] { "SUNDAY", "MONDAY", 
-			            		"TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY",
-			            		"SATURDAY" };
-			    String day = days[calendar.get(Calendar.DAY_OF_WEEK)];
+			    String[] days = new String[] { "THURSDAY", "FRIDAY", "SATURDAY",
+			    		"SUNDAY", "MONDAY", "TUESDAY", "WEDNESDAY"	};
+			    String day = days[calendar.get(Calendar.DAY_OF_WEEK)-1];
 				 
 			    TextView dayTextView = (TextView) rootView.findViewById(R.id.textView2);
-			    dayTextView.setText("Datum: " + chosenYear + "/" + chosenMonth + "/" + chosenDay + "\n" + "(" + day + ")");
+			    dayTextView.setText("Datum: " + chosenYear + "/" + chosenMonth
+			    		+ "/" + chosenDay + "\n" + "(" + day + ")");
 				 
 
 
 				 
 				 return rootView;
-			case WEEK:
+			case VECKA:
 				 // TODO: Ta bort fragment_tab s� sm�ningom ***
 				 // TODO: Byt ut mot veckovy
 				 rootView = inflater.inflate(R.layout.fragment_tab,container, false);
@@ -334,7 +343,7 @@ public class TabActivity extends FragmentActivity implements
 					dateTextView.setText("Veckovy ej implementerad!");	
 				 
 				 return rootView;
-			case MONTH:
+			case MANAD:
 				 rootView = inflater.inflate(R.layout.activity_calendar,container, false);
 		 				 
 				 ///
@@ -346,11 +355,11 @@ public class TabActivity extends FragmentActivity implements
 		            		   int year, int month, int day) {
 
 		            	   chosenYear = year;
-		            	   chosenMonth = month;
+		            	   chosenMonth = month+1;
 		            	   chosenDay = day;
 		            	   
 		            	   // Byt till dagfliken, r�tt datum
-		            	   mViewPager.setCurrentItem(SectionType.DAY.ordinal()); 
+		            	   mViewPager.setCurrentItem(SectionType.DAG.ordinal()); 
 		               }
 		               });					 
 				 return rootView;
