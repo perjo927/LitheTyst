@@ -59,8 +59,6 @@ public class SettingsMenuActivity extends Activity {
 		
 		  loadLocale();
 		  */
-		
-		
 	}
 
 	@Override
