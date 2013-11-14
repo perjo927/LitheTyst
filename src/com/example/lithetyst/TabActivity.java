@@ -59,7 +59,7 @@ public class TabActivity extends FragmentActivity implements
 		today.setToNow();	
 		
 		chosenYear = today.year;
-		chosenMonth = today.month;
+		chosenMonth = today.month+1;
 		chosenDay = today.monthDay;
 		
 		// Root-vyn/layout
@@ -300,6 +300,7 @@ public class TabActivity extends FragmentActivity implements
 						info.setText(event.get("summary"));
 						info.setBackgroundResource(R.color.redorange);
 						info.setLayoutParams(params);
+						info.setSingleLine(false);
 						tables.get(0).addView(info);
 						
 						for (int y = 1; y < tables.size(); y++)

@@ -79,6 +79,9 @@ public class SyncActivity extends Activity
 		{
 			startTabActivity();
 			System.out.println("Success");
+			MuteManager mg = new MuteManager(getBaseContext());
+			mg.set_next_mute();
+			mg.set_next_unmute();
 		}
 		else
 		{
