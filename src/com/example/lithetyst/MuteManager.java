@@ -1,6 +1,8 @@
 package com.example.lithetyst;
 
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Map;
 
 import android.app.AlarmManager;
 import android.app.PendingIntent;
@@ -15,7 +17,7 @@ public class MuteManager
 		ctx = _ctx;
 	}
 	
-	public void mute(String year, String month, String day, String hour, String minute)
+	private void mute(String year, String month, String day, String hour, String minute)
 	{
 		PendingIntent pendingIntent;
 		Calendar calendar = Calendar.getInstance();
@@ -32,7 +34,7 @@ public class MuteManager
         alarmManager.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pendingIntent);
 	}
 	
-	public void unmute(String year, String month, String day, String hour, String minute)
+	private void unmute(String year, String month, String day, String hour, String minute)
 	{
 		PendingIntent pendingIntent;
 		Calendar calendar = Calendar.getInstance();
@@ -48,6 +50,54 @@ public class MuteManager
         AlarmManager alarmManager = (AlarmManager)ctx.getSystemService(Context.ALARM_SERVICE);
         alarmManager.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pendingIntent);
         
+	}
+	
+	public void set_next_mute()
+	{
+		Calendar calendar = Calendar.getInstance();
+		Events event_handler = new Events();
+		ArrayList< Map<String, String> >events = event_handler.get_events(ctx);
+		
+		for (int i = 0; i < events.size(); i++)
+		{
+			Map <String, String> event = events.get(i);
+			Long event1 = Long.parseLong(Integer.toString(calendar.YEAR) + Integer.toString(calendar.MONTH+1) + 
+					Integer.toString(calendar.DAY_OF_MONTH) + Integer.toString(calendar.HOUR_OF_DAY) + Integer.toString(calendar.MINUTE));
+			
+			Long event2 = Long.parseLong(event.get("start-year")+event.get("start-month")+
+					event.get("start-day")+event.get("start-hour")+event.get("start-minute"));
+			
+			if (event1 < event2)
+			{
+				mute(event.get("start-year"),event.get("start-month"),event.get("start-day"),event.get("start-hour"),event.get("start-minute"));
+				return;
+			}
+		}
+		return;
+	}
+	
+	public void set_next_unmute()
+	{
+		Calendar calendar = Calendar.getInstance();
+		Events event_handler = new Events();
+		ArrayList< Map<String, String> >events = event_handler.get_events(ctx);
+		
+		for (int i = 0; i < events.size(); i++)
+		{
+			Map <String, String> event = events.get(i);
+			Long event1 = Long.parseLong(Integer.toString(calendar.YEAR) + Integer.toString(calendar.MONTH+1) + 
+					Integer.toString(calendar.DAY_OF_MONTH) + Integer.toString(calendar.HOUR_OF_DAY) + Integer.toString(calendar.MINUTE));
+			
+			Long event2 = Long.parseLong(event.get("end-year")+event.get("end-month")+
+					event.get("end-day")+event.get("end-hour")+event.get("end-minute"));
+			
+			if (event1 < event2)
+			{
+				unmute(event.get("end-year"),event.get("end-month"),event.get("end-day"),event.get("end-hour"),event.get("end-minute"));
+				return;
+			}
+		}
+		return;
 	}
 
 }

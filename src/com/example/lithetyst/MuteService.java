@@ -28,6 +28,8 @@ public class MuteService extends Service
    public void onStart(Intent intent, int startId)
    {
       vc.mute();
+      MuteManager mg = new MuteManager(getBaseContext());
+      mg.set_next_mute();
    }
  
     @Override

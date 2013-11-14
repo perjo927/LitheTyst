@@ -28,6 +28,8 @@ public class UnmuteService extends Service
    public void onStart(Intent intent, int startId)
    {
       vc.unmute();
+      MuteManager mg = new MuteManager(getBaseContext());
+      mg.set_next_unmute();
    }
  
     @Override
