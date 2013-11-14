@@ -56,7 +56,7 @@
     <string name="sync">Sync</string>
     <string name="next">Next</string>
     <string name="sync_hint">Studentgrupp ...</string>
-    <string name="sync_text">Ange din studentgrupp och tryck på "sync"</string>
+    <string name="sync_text">Ange din studentgrupp (ex: "IP2") och tryck på "sync"</string>
     
     
     <string name="view_options">View</string>

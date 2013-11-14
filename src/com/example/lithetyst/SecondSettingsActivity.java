@@ -43,4 +43,8 @@ public class SecondSettingsActivity extends Activity {
 		startActivity(intent);
 	}
 
+	public void startSyncActivity() {
+		Intent intent = new Intent(this, SyncActivity.class);
+		startActivity(intent);
+	}
 }

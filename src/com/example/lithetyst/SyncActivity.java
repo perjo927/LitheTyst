@@ -72,7 +72,7 @@ public class SyncActivity extends Activity
 	
 	private void sync()
 	{
-		String group = link_input.getText().toString(); // url gotten from the text input
+		String group = link_input.getText().toString().toUpperCase(); // url gotten from the text input
 		String ical_link = DownloadIcal.get_ical_link(group);
 		
 		if (DownloadIcal.save_file(ical_link,getBaseContext()))

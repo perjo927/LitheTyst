@@ -91,6 +91,11 @@ public class SettingsMenuActivity extends Activity {
 		startActivity(intent);
 	}
 	
+	public void startSyncActivity() {
+		Intent intent = new Intent(this, SyncActivity.class);
+		startActivity(intent);
+	}
+	
 	  public void addListenerOnSpinnerItemSelection() {
 		spinner1 = (Spinner) findViewById(R.id.spinner1);
 		spinner2 = (Spinner) findViewById(R.id.spinner2);
