@@ -66,9 +66,9 @@ public class MuteManager
 			String year, month, day, hour, minute;
 			year = Integer.toString(calendar.YEAR);
 			month = Integer.toString(calendar.MONTH+1);
-			day = Integer.toString(calendar.DAY_OF_MONTH);;
-			hour = Integer.toString(calendar.HOUR_OF_DAY);;
-			minute = Integer.toString(calendar.MINUTE);;
+			day = Integer.toString(calendar.DAY_OF_MONTH);
+			hour = Integer.toString(calendar.HOUR_OF_DAY);
+			minute = Integer.toString(calendar.MINUTE);
 			System.out.println(year);
 			System.out.println(month);
 			System.out.println(day);
