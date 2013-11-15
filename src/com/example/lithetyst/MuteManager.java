@@ -61,8 +61,38 @@ public class MuteManager
 		for (int i = 0; i < events.size(); i++)
 		{
 			Map <String, String> event = events.get(i);
-			Long event1 = Long.parseLong(Integer.toString(calendar.YEAR) + Integer.toString(calendar.MONTH+1) + 
-					Integer.toString(calendar.DAY_OF_MONTH) + Integer.toString(calendar.HOUR_OF_DAY) + Integer.toString(calendar.MINUTE));
+			
+			
+			String year, month, day, hour, minute;
+			year = Integer.toString(calendar.YEAR);
+			month = Integer.toString(calendar.MONTH+1);
+			day = Integer.toString(calendar.DAY_OF_MONTH);;
+			hour = Integer.toString(calendar.HOUR_OF_DAY);;
+			minute = Integer.toString(calendar.MINUTE);;
+			System.out.println(year);
+			System.out.println(month);
+			System.out.println(day);
+			System.out.println(hour);
+			System.out.println(minute);
+			if (month.length() == 1)
+			{
+				month = "0" + month;
+			}
+			if (day.length() == 1)
+			{
+				day = "0" + day;
+			}
+			if (hour.length() == 1)
+			{
+				hour = "0" + hour;
+			}
+			if (minute.length() == 1)
+			{
+				minute = "0" + minute;
+			}
+			
+			Long event1 = Long.parseLong(year+month+day+hour+minute);
+			
 			
 			Long event2 = Long.parseLong(event.get("start-year")+event.get("start-month")+
 					event.get("start-day")+event.get("start-hour")+event.get("start-minute"));
@@ -85,9 +115,33 @@ public class MuteManager
 		for (int i = 0; i < events.size(); i++)
 		{
 			Map <String, String> event = events.get(i);
-			Long event1 = Long.parseLong(Integer.toString(calendar.YEAR) + Integer.toString(calendar.MONTH+1) + 
-					Integer.toString(calendar.DAY_OF_MONTH) + Integer.toString(calendar.HOUR_OF_DAY) + Integer.toString(calendar.MINUTE));
 			
+			String year, month, day, hour, minute;
+			year = Integer.toString(calendar.YEAR);
+			month = Integer.toString(calendar.MONTH+1);
+			day = Integer.toString(calendar.DAY_OF_MONTH);;
+			hour = Integer.toString(calendar.HOUR_OF_DAY);;
+			minute = Integer.toString(calendar.MINUTE);;
+			
+			if (month.length() == 1)
+			{
+				month = "0" + month;
+			}
+			if (day.length() == 1)
+			{
+				day = "0" + day;
+			}
+			if (hour.length() == 1)
+			{
+				hour = "0" + hour;
+			}
+			if (minute.length() == 1)
+			{
+				minute = "0" + minute;
+			}
+			
+			Long event1 = Long.parseLong(year+month+day+hour+minute);
+									
 			Long event2 = Long.parseLong(event.get("end-year")+event.get("end-month")+
 					event.get("end-day")+event.get("end-hour")+event.get("end-minute"));
 			
