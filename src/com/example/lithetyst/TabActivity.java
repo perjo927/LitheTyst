@@ -155,9 +155,6 @@ public class TabActivity extends FragmentActivity implements
 	        case R.id.action_settings:
 	        	startSettingsActivity();
 	            return true;
-	        case R.id.action_settings_b:
-	        	startSecondSettingsActivity();
-	            return true;    
 	        default:
 	            return super.onOptionsItemSelected(item);
 	    }
@@ -166,11 +163,6 @@ public class TabActivity extends FragmentActivity implements
 	public void startSettingsActivity() {
 		//
 		Intent intent = new Intent(this, SettingsMenuActivity.class);
-		startActivity(intent);
-	}
-	public void startSecondSettingsActivity() {
-		//
-		Intent intent = new Intent(this, SecondSettingsActivity.class);
 		startActivity(intent);
 	}
 	
@@ -251,7 +243,7 @@ public class TabActivity extends FragmentActivity implements
 	public static class CalendarSectionFragment extends Fragment {
 		// Fragmentets argument som representerar rubriken f�r dess section 
 		public static final String ARG_SECTION_TITLE = "section_title";
-		private static enum SectionType { DAG, VECKA, MANAD; } // Flikar/tabbar
+		private static enum SectionType { } // Flikar/tabbar
 		
 		// konstruktor
 		public CalendarSectionFragment() {
@@ -272,102 +264,11 @@ public class TabActivity extends FragmentActivity implements
 		    SectionType currentType = SectionType.valueOf(chosenTab.toUpperCase(Locale.getDefault()));
 		    // Switcha enum-v�rdet, �ppna r�tt vy/layout till r�tt flik
 			switch (currentType) {
-			case DAG:
-				
-				rootView = inflater.inflate(R.layout.activity_day,container, false);
-				Events event_handler = new Events();
-				ArrayList< Map<String, String> > events = event_handler.get_events(rootView.getContext());
-				ArrayList<TableRow> tables = new ArrayList<TableRow>();
-				TableRow.LayoutParams params = new TableRow.LayoutParams(LayoutParams.WRAP_CONTENT,LayoutParams.FILL_PARENT);
-				
-				for (int i = 0; i < events.size(); i++)
-				{
-					Map <String, String> event = events.get(i);
-					if (event.get("start-year").equals(Integer.toString(chosenYear)) && 
-						event.get("start-month").equals(Integer.toString(chosenMonth)) && 
-						event.get("start-day").equals(Integer.toString(chosenDay)))
-					{
-						System.out.println("Ny event");
-						tables.clear();
-						Integer hours = Integer.parseInt(event.get("end-hour")) - Integer.parseInt(event.get("start-hour"));
-						for (int y = 0; y < hours; y++)
-						{
-							tables.add((TableRow) rootView.findViewById( schedule_rows.get( Integer.parseInt(event.get("start-hour")) +y )));
-						}
-						
-						TextView info = new TextView(rootView.getContext());
-						
-						info.setText(event.get("summary"));
-						info.setBackgroundResource(R.color.redorange);
-						info.setLayoutParams(params);
-						info.setSingleLine(false);
-						tables.get(0).addView(info);
-						
-						for (int y = 1; y < tables.size(); y++)
-						{
-							TextView block = new TextView(rootView.getContext());
-							block.setBackgroundResource(R.color.redorange);
-							block.setLayoutParams(params);
-							
-							tables.get(y).addView(block);
-						}
-					}
-				
-				}
-						
-				
 
-				 // TODO: Parsa r�tt dag - OM CalendarActivity vill det
-				 // TODO: R�tt dag finns i statiska variabeln chosenDate
-				Calendar calendar = Calendar.getInstance();
-				Date date = new Date(chosenYear, chosenMonth, chosenDay);
-				calendar.setTime(date );
-			    String[] days = new String[] { "THURSDAY", "FRIDAY", "SATURDAY",
-			    		"SUNDAY", "MONDAY", "TUESDAY", "WEDNESDAY"	};
-			    String day = days[calendar.get(Calendar.DAY_OF_WEEK)-1];
-				 
-			    TextView dayTextView = (TextView) rootView.findViewById(R.id.textView2);
-			    dayTextView.setText("Datum: " + chosenYear + "/" + chosenMonth
-			    		+ "/" + chosenDay + "\n" + "(" + day + ")");
-				 
-
-
-				 
-				 return rootView;
-			case VECKA:
-				 // TODO: Ta bort fragment_tab s� sm�ningom ***
-				 // TODO: Byt ut mot veckovy
-				 rootView = inflater.inflate(R.layout.fragment_tab,container, false);
-				 
-					TextView dateTextView = (TextView) rootView
-					.findViewById(R.id.section_label);
-					dateTextView.setText("Veckovy ej implementerad!");	
-				 
-				 return rootView;
-			case MANAD:
-				 rootView = inflater.inflate(R.layout.activity_calendar,container, false);
-		 				 
-				 ///
-				 CalendarView calendarView = (CalendarView) rootView.findViewById(R.id.calendar_view);
-				
-		         calendarView.setOnDateChangeListener(new OnDateChangeListener() {
-		               @Override
-		               public void onSelectedDayChange(CalendarView view,
-		            		   int year, int month, int day) {
-
-		            	   chosenYear = year;
-		            	   chosenMonth = month+1;
-		            	   chosenDay = day;
-		            	   
-		            	   // Byt till dagfliken, r�tt datum
-		            	   mViewPager.setCurrentItem(SectionType.DAG.ordinal()); 
-		               }
-		               });					 
-				 return rootView;
 			default:
 				 // Hit borde vi inte komma 
 				 // TODO: throw error?
-				 rootView = inflater.inflate(R.layout.activity_calendar,container, false);
+				 rootView = inflater.inflate(R.layout.activity_day,container, false);
 				 return rootView;
 			}
 		}

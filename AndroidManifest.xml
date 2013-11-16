@@ -4,9 +4,9 @@
     android:configChanges="locale"
     android:versionCode="1"
     android:versionName="1.0" >
-    
+
     <uses-feature android:name="android.hardware.wifi" />
-    
+
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.INTERNET" >
     </uses-permission>
@@ -16,7 +16,6 @@
         android:largeScreens="true"
         android:normalScreens="true"
         android:smallScreens="true" />
-    
 
     <uses-sdk
         android:minSdkVersion="14"
@@ -27,8 +26,6 @@
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/Theme.Retro" >
-
-
         <activity
             android:name="com.example.lithetyst.MainActivity"
             android:label="@string/app_name" >
@@ -38,42 +35,32 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-
-		<activity
-            android:name="com.example.lithetyst.SettingsActivity"
-            android:label="@string/title_activity_settings" >
-        </activity>
-        <activity
-            android:name="com.example.lithetyst.SecondSettingsActivity"
-            android:label="@string/title_activity_second_settings" >
-        </activity>
         <activity
             android:name="com.example.lithetyst.SettingsMenuActivity"
             android:label="@string/title_activity_settings_menu" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.lithetyst.MainActivity" />
-        </activity> 
-        
-         <activity
+        </activity>
+        <activity
             android:name="com.example.lithetyst.SyncActivity"
             android:label="@string/title_activity_sync" >
         </activity>
-        <service android:name=".MuteService"
-                 android:enabled="true" />
-        <service android:name=".UnmuteService"
-                 android:enabled="true" />
-         
-	    <receiver android:name=".MuteReceiver"/>
-	    <receiver android:name=".UnmuteReceiver"/>
 
-        <!-- Tab-vy -->
+        <service
+            android:name="com.example.lithetyst.MuteService"
+            android:enabled="true" />
+        <service
+            android:name="com.example.lithetyst.UnmuteService"
+            android:enabled="true" />
+
+        <receiver android:name="com.example.lithetyst.MuteReceiver" />
+        <receiver android:name="com.example.lithetyst.UnmuteReceiver" />
+
         <activity
-            android:name="com.example.lithetyst.TabActivity"
-            android:label="@string/title_activity_tab" >
+            android:name="com.example.lithetyst.DayActivity"
+            android:label="@string/title_activity_day" >
         </activity>
-
     </application>
 
 </manifest>

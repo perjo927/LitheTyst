@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+    
+    <!-- Menyval till actionbar -->
+    <item android:id="@+id/action_schedule_top"
+          android:icon="@drawable/ic_action_go_to_today"
+          android:title="@string/action_calendar"
+          android:showAsAction="ifRoom" />
+    
+    <item android:id="@+id/action_vibrate_top"
+          android:icon="@drawable/device_access_volume_muted"
+          android:title="@string/vibration_options"
+          android:showAsAction="ifRoom" />
+    
+
+    <!--  syns inte i actionbar -->
+        <item android:id="@+id/action_vibrate"
+          android:title="@string/vibration_options"
+          android:showAsAction="never" />
+    <item android:id="@+id/action_schedule"
+          android:title="@string/action_calendar"
+          android:showAsAction="never" /> 
+</menu>

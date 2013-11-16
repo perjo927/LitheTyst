@@ -2,7 +2,7 @@
 <resources>
 
     <string name="app_name">LitHe Tyst</string>
-    
+
     <!-- colors -->
     <color name="settings_title_color">#FF99CC</color>
     <color name="background_color_kool">#000000</color>
@@ -19,14 +19,14 @@
     <string name="action_settings_b">Inställningar (B)</string>
     <string name="action_search">Search</string>
     <string name="action_daylayout">Daglayout</string>
-    <string name="action_calendar">Kalender</string>
+    <string name="action_calendar">Schema</string>
 
     <string-array name="views_array">
         <item>@string/day</item>
         <item>@string/week</item>
         <item>@string/month</item>
     </string-array>
-    
+
     <string name="language">Språk</string>
 
     <string-array name="language_array">
@@ -34,8 +34,10 @@
         <item>Engelska</item>
     </string-array>
 
+    <!-- Knappar -->
     <string name="edit">Ändra schema</string>
     <string name="submit">Utför</string>
+    <string name="open_date_picker">Välj nytt datum</string>
     <string name="eight">08.00</string>
     <string name="nine">09.00</string>
     <string name="the_day"></string>
@@ -51,41 +53,35 @@
     <string name="seven">19.00</string>
     <string name="eight_pm">20.00</string>
     <string name="nine_pm">21.00</string>
-    <string name="title_activity_day">DayActivity</string>
-    
-    <string name="sync">Sync</string>
+    <string name="sync">Synka</string>
     <string name="next">Next</string>
     <string name="sync_hint">Studentgrupp ...</string>
-    <string name="sync_text">Ange studentgrupp (ex: IP2) och tryck "sync"</string>
-    
-    
+    <string name="sync_text">Ange studentgrupp (ex: IP2) och tryck Synka</string>
     <string name="view_options">View</string>
-    <string name="vibration_options">Vibration</string>
+    <string name="vibration_options">Vibration av/på</string>
     <string name="add_change_scedule">Lägg till/ändra schema</string>
     <string name="language_options">Språk</string>
-
     <string name="language_eng">eng</string>
     <string name="language_sve">sve</string>
     <string name="view_options_sve">Vy</string>
     <string name="views_prompt">Välj vy</string>
-
     <string name="edit_schedule">Ändra schema</string>
-    
+
     <!-- Sidotitlar -->
-    <string name="title_activity_sync">LiTHe Tyst: SyncActivity</string>
+    <string name="title_activity_sync">LiTHe Tyst</string>
+    <string name="title_activity_day">LiTHe Tyst</string>
     <string name="title">Inställningar</string>
-    <string name="title_activity_settings_menu">LiTHe Tyst: Inställningar</string>
-    <string name="title_activity_second_settings">LiTHe Tyst: Inställningar</string>
-    <string name="title_activity_tab">LiTHe Tyst: Kalender</string>
-    
+    <string name="title_activity_settings_menu">LiTHe Tyst</string>
+    <string name="title_activity_tab">LiTHe Tyst</string>
     <string name="day">Dag</string>
     <string name="week">Vecka</string>
-    <string name="month">Manad</string>
+    <string name="month">Månad</string>
 
     <!-- Tabbar -->
     <string name="title_section1">Dag</string>
     <string name="title_section2">Vecka</string>
     <string name="title_section3">Manad</string>
     <string name="title_activity_calendar">Manadsvy</string>
+
 
 </resources>
