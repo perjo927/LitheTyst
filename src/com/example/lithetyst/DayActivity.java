@@ -42,26 +42,26 @@ public class DayActivity extends Activity {
 		/// Daglayout
 		setContentView(R.layout.activity_day);
 		
-		// Fånga datum från ev. omstart 
+		// Fï¿½nga datum frï¿½n ev. omstart 
 		Bundle extras = getIntent().getExtras(); 
 		if (extras != null) {
 		    chosenYear = extras.getInt("year");
 		    chosenMonth = extras.getInt("month");
 		    chosenDay = extras.getInt("day");
 		} else {
-			// SÄtt dagens datum
+			// Sï¿½tt dagens datum
 			getTodaysDate();
 		}
 		
 		// skapa virtuellt schema
 		fillSchedule();
-		// Fyll på schemat 
+		// Fyll pï¿½ schemat 
         fillTableEvents();
-		// Visa rätt dag
+		// Visa rï¿½tt dag
 		getActualDay();
 
 		
-        // Skapa lyssnare til datumväljaren
+        // Skapa lyssnare til datumvï¿½ljaren
 		Button datePickerButton = (Button) findViewById(R.id.date_picker_button);
         datePickerButton.setOnClickListener(new OnClickListener() {
             public void onClick(View v) {
@@ -108,7 +108,7 @@ public class DayActivity extends Activity {
 	
 	
 	////////////////////////////////////////
-	// Fånga dagens datum (default) och spara
+	// Fï¿½nga dagens datum (default) och spara
 	private void getTodaysDate(){
 		Time today = new Time(Time.getCurrentTimezone());
 		today.setToNow();	
@@ -142,7 +142,7 @@ public class DayActivity extends Activity {
 		Date date = new Date(chosenYear, chosenMonth, chosenDay);
 		calendar.setTime(date );
 		// Dagnamn att fylla kalenderhuvudet med
-	    String[] days = new String[] { "Torsdag", "Fredag", "Lördag",
+	    String[] days = new String[] { "Torsdag", "Fredag", "Lï¿½rdag",
 	    		"Sunday", "Monday", "Tisdag", "Onsdag"	};
 	    String day = days[calendar.get(Calendar.DAY_OF_WEEK)-1];
 		// Foga in
@@ -151,57 +151,60 @@ public class DayActivity extends Activity {
 	    		+ "/" + chosenDay + "\n" + "(" + day + ")");
 	}
 	
-	// TODO: Rensa schemavyn här istället för refreshActivity?
-	// Fyll kalendervyn med events från schemat
+	// TODO: Rensa schemavyn hï¿½r istï¿½llet fï¿½r refreshActivity?
+	// Fyll kalendervyn med events frï¿½n schemat
 	private void fillTableEvents(){
 		Events event_handler = new Events(); // Se Events.java
-		// Hämta events
-		ArrayList< Map<String, String> > events =
-		event_handler.get_events(getBaseContext());
-		// Rader till tabellen
-		ArrayList<TableRow> tables = new ArrayList<TableRow>(); 
-		// Utseende på tabellen
-		TableRow.LayoutParams params = 
-		new TableRow.LayoutParams(LayoutParams.WRAP_CONTENT,LayoutParams.FILL_PARENT);
-		
-		// Loopa igenom alla events
-		for (int i = 0; i < events.size(); i++)
+		if (event_handler.fileExists("schema.ical",getBaseContext()))
 		{
-			Map <String, String> event = events.get(i);
-			// Använd bara den aktuella dagens events
-			if (event.get("start-year").equals(Integer.toString(chosenYear)) && 
-				event.get("start-month").equals(Integer.toString(chosenMonth)) && 
-				event.get("start-day").equals(Integer.toString(chosenDay)))
+			// Hï¿½mta events
+			ArrayList< Map<String, String> > events =
+			event_handler.get_events(getBaseContext());
+			// Rader till tabellen
+			ArrayList<TableRow> tables = new ArrayList<TableRow>(); 
+			// Utseende pï¿½ tabellen
+			TableRow.LayoutParams params = 
+			new TableRow.LayoutParams(LayoutParams.WRAP_CONTENT,LayoutParams.FILL_PARENT);
+			
+			// Loopa igenom alla events
+			for (int i = 0; i < events.size(); i++)
 			{
-				tables.clear(); // rensa array
-				// Lägg till ett block med en kalenderhändelse
-				Integer hours = Integer.parseInt(event.get("end-hour")) - Integer.parseInt(event.get("start-hour"));
-				for (int y = 0; y < hours; y++)
+				Map <String, String> event = events.get(i);
+				// Anvï¿½nd bara den aktuella dagens events
+				if (event.get("start-year").equals(Integer.toString(chosenYear)) && 
+					event.get("start-month").equals(Integer.toString(chosenMonth)) && 
+					event.get("start-day").equals(Integer.toString(chosenDay)))
 				{
-					tables.add((TableRow) findViewById( schedule_rows.get( Integer.parseInt(event.get("start-hour")) +y )));
+					tables.clear(); // rensa array
+					// Lï¿½gg till ett block med en kalenderhï¿½ndelse
+					Integer hours = Integer.parseInt(event.get("end-hour")) - Integer.parseInt(event.get("start-hour"));
+					for (int y = 0; y < hours; y++)
+					{
+						tables.add((TableRow) findViewById( schedule_rows.get( Integer.parseInt(event.get("start-hour")) +y )));
+					}
+					
+					TextView info = new TextView(getBaseContext());
+					
+					info.setText(event.get("summary"));
+					info.setBackgroundResource(R.color.redorange);
+					info.setLayoutParams(params);
+					info.setSingleLine(false);
+					tables.get(0).addView(info);
+					
+					for (int y = 1; y < tables.size(); y++)
+					{
+						TextView block = new TextView(getBaseContext());
+						block.setBackgroundResource(R.color.redorange);
+						block.setLayoutParams(params);
+						tables.get(y).addView(block);
+					}
 				}
-				
-				TextView info = new TextView(getBaseContext());
-				
-				info.setText(event.get("summary"));
-				info.setBackgroundResource(R.color.redorange);
-				info.setLayoutParams(params);
-				info.setSingleLine(false);
-				tables.get(0).addView(info);
-				
-				for (int y = 1; y < tables.size(); y++)
-				{
-					TextView block = new TextView(getBaseContext());
-					block.setBackgroundResource(R.color.redorange);
-					block.setLayoutParams(params);
-					tables.get(y).addView(block);
-				}
+			
 			}
-		
 		}
     } // fillTableEvents
 
-	// Här väljer man vilken dag man vill kolla schemat för
+	// Hï¿½r vï¿½ljer man vilken dag man vill kolla schemat fï¿½r
 	private DatePickerDialog.OnDateSetListener dateListener =
     		new DatePickerDialog.OnDateSetListener() {
 
@@ -245,9 +248,9 @@ public class DayActivity extends Activity {
 		/* 
 		// virtuellt schema
 		fillSchedule();
-		// Fyll på schemat 
+		// Fyll pï¿½ schemat 
         fillTableEvents();
-		// Visa rätt dag
+		// Visa rï¿½tt dag
 		getActualDay();
 		*/
 	}

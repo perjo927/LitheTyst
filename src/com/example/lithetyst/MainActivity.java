@@ -8,10 +8,19 @@ import android.os.Bundle;
 
 public class MainActivity extends Activity {
 	@Override
-	protected void onCreate(Bundle savedInstanceState) {
+	protected void onCreate(Bundle savedInstanceState) 
+	{
 		super.onCreate(savedInstanceState);
-
-	    Intent intent = new Intent(this, SyncActivity.class);
-	    startActivity(intent);
+		Settings set = new Settings(getBaseContext());
+		if (set.getCalendar().equals(""))
+		{
+			Intent intent = new Intent(this, SyncActivity.class);
+			startActivity(intent);
+		}
+		else
+		{
+			Intent intent = new Intent(this, DayActivity.class);
+			startActivity(intent);	
+		}
 	}
 }

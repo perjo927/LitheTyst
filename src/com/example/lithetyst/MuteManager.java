@@ -8,6 +8,7 @@ import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.text.format.Time;
 
 public class MuteManager 
 {
@@ -54,7 +55,6 @@ public class MuteManager
 	
 	public void set_next_mute()
 	{
-		Calendar calendar = Calendar.getInstance();
 		Events event_handler = new Events();
 		ArrayList< Map<String, String> >events = event_handler.get_events(ctx);
 		
@@ -62,18 +62,16 @@ public class MuteManager
 		{
 			Map <String, String> event = events.get(i);
 			
+			Time today = new Time(Time.getCurrentTimezone());
+			today.setToNow();	
 			
 			String year, month, day, hour, minute;
-			year = Integer.toString(calendar.YEAR);
-			month = Integer.toString(calendar.MONTH+1);
-			day = Integer.toString(calendar.DAY_OF_MONTH);
-			hour = Integer.toString(calendar.HOUR_OF_DAY);
-			minute = Integer.toString(calendar.MINUTE);
-			System.out.println(year);
-			System.out.println(month);
-			System.out.println(day);
-			System.out.println(hour);
-			System.out.println(minute);
+			year = Integer.toString(today.year);
+			month = Integer.toString(today.month+1);
+			day = Integer.toString(today.monthDay);
+			hour = Integer.toString(today.hour);
+			minute = Integer.toString(today.minute);
+			
 			if (month.length() == 1)
 			{
 				month = "0" + month;
@@ -108,7 +106,6 @@ public class MuteManager
 	
 	public void set_next_unmute()
 	{
-		Calendar calendar = Calendar.getInstance();
 		Events event_handler = new Events();
 		ArrayList< Map<String, String> >events = event_handler.get_events(ctx);
 		
@@ -116,12 +113,15 @@ public class MuteManager
 		{
 			Map <String, String> event = events.get(i);
 			
+			Time today = new Time(Time.getCurrentTimezone());
+			today.setToNow();	
+			
 			String year, month, day, hour, minute;
-			year = Integer.toString(calendar.YEAR);
-			month = Integer.toString(calendar.MONTH+1);
-			day = Integer.toString(calendar.DAY_OF_MONTH);;
-			hour = Integer.toString(calendar.HOUR_OF_DAY);;
-			minute = Integer.toString(calendar.MINUTE);;
+			year = Integer.toString(today.year);
+			month = Integer.toString(today.month+1);
+			day = Integer.toString(today.monthDay);
+			hour = Integer.toString(today.hour);
+			minute = Integer.toString(today.minute);
 			
 			if (month.length() == 1)
 			{

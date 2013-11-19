@@ -137,7 +137,7 @@ public class Events
         return null;
 	}
 	
-	private boolean fileExists(String fname, Context ctx)
+	public boolean fileExists(String fname, Context ctx)
 	{
 	    File file = ctx.getFileStreamPath(fname);
 	    return file.exists();

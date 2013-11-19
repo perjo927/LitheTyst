@@ -20,6 +20,7 @@ public class SyncActivity extends Activity
 
 	Button sync_button;
 	EditText link_input;
+	Settings set;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) 
@@ -29,6 +30,7 @@ public class SyncActivity extends Activity
 		
 		sync_button = (Button) findViewById(R.id.sync_button);
 		link_input   = (EditText)findViewById(R.id.link_input);
+		set  = new Settings(getBaseContext());
 		createListeners();
 	}
 
@@ -40,7 +42,7 @@ public class SyncActivity extends Activity
 	    return super.onCreateOptionsMenu(menu);
 	}
 	
-	// TODO: Rätt meny
+	// TODO: Rï¿½tt meny
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 	    // Handle presses on the action bar items
@@ -54,6 +56,16 @@ public class SyncActivity extends Activity
 		    	Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
 		    	v.vibrate(500);
 		        // Toggla vibration med vibration = !toggle_vibration el dyl
+		    	
+		    	
+		    	if (set.getVibrate())
+		    	{
+		    		set.setVibrate(false);
+		    	}
+		    	else
+		    	{
+		    		set.setVibrate(true);		    	
+		    	}
 	            return true;
 	        case R.id.action_schedule:
 	        	startDayActivity();
@@ -61,11 +73,6 @@ public class SyncActivity extends Activity
 	        default:
 	            return super.onOptionsItemSelected(item);
 	    }
-	}
-	
-	public void startTabActivity() {
-		Intent intent = new Intent(this, TabActivity.class);
-		startActivity(intent);
 	}
 	
 	public void startDayActivity() {
@@ -92,10 +99,11 @@ public class SyncActivity extends Activity
 		
 		if (DownloadIcal.save_file(ical_link,getBaseContext()))
 		{
-			startTabActivity();
 			MuteManager mg = new MuteManager(getBaseContext());
 			mg.set_next_mute();
 			mg.set_next_unmute();
+			set.setCalendar(ical_link);
+			startDayActivity();
 		}
 		else
 		{
