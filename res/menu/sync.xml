@@ -12,7 +12,6 @@
           android:title="@string/vibration_options"
           android:showAsAction="ifRoom" />
     
-
     <!--  syns inte i actionbar -->
         <item android:id="@+id/action_vibrate"
           android:title="@string/vibration_options"

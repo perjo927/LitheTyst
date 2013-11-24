@@ -1,4 +1,4 @@
-package com.example.lithetyst; // byt namn 
+package com.example.lithetyst; 
 
 
 import android.app.Activity;

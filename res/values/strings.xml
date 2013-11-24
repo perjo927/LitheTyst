@@ -21,22 +21,8 @@
     <string name="action_daylayout">Daglayout</string>
     <string name="action_calendar">Schema</string>
 
-    <string-array name="views_array">
-        <item>@string/day</item>
-        <item>@string/week</item>
-        <item>@string/month</item>
-    </string-array>
-
-    <string name="language">Språk</string>
-
-    <string-array name="language_array">
-        <item>Svenska</item>
-        <item>Engelska</item>
-    </string-array>
 
     <!-- Knappar -->
-    <string name="edit">Ändra schema</string>
-    <string name="submit">Utför</string>
     <string name="open_date_picker">Välj nytt datum</string>
     <string name="eight">08.00</string>
     <string name="nine">09.00</string>
@@ -60,9 +46,6 @@
     <string name="view_options">View</string>
     <string name="vibration_options">Vibration av/på</string>
     <string name="add_change_scedule">Lägg till/ändra schema</string>
-    <string name="language_options">Språk</string>
-    <string name="language_eng">eng</string>
-    <string name="language_sve">sve</string>
     <string name="view_options_sve">Vy</string>
     <string name="views_prompt">Välj vy</string>
     <string name="edit_schedule">Ändra schema</string>
@@ -70,18 +53,6 @@
     <!-- Sidotitlar -->
     <string name="title_activity_sync">LiTHe Tyst</string>
     <string name="title_activity_day">LiTHe Tyst</string>
-    <string name="title">Inställningar</string>
-    <string name="title_activity_settings_menu">LiTHe Tyst</string>
-    <string name="title_activity_tab">LiTHe Tyst</string>
-    <string name="day">Dag</string>
-    <string name="week">Vecka</string>
-    <string name="month">Månad</string>
-
-    <!-- Tabbar -->
-    <string name="title_section1">Dag</string>
-    <string name="title_section2">Vecka</string>
-    <string name="title_section3">Manad</string>
-    <string name="title_activity_calendar">Manadsvy</string>
 
 
 </resources>

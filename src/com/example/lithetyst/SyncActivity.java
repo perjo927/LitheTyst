@@ -2,6 +2,7 @@ package com.example.lithetyst;
 
 import android.os.Bundle;
 import android.os.Vibrator;
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -15,6 +16,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 
+@SuppressLint("DefaultLocale")
 public class SyncActivity extends Activity
 {
 
@@ -42,7 +44,6 @@ public class SyncActivity extends Activity
 	    return super.onCreateOptionsMenu(menu);
 	}
 	
-	// TODO: R�tt meny
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 	    // Handle presses on the action bar items
@@ -54,9 +55,6 @@ public class SyncActivity extends Activity
 	        case R.id.action_vibrate:
 		        // 
 		    	Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-		    	v.vibrate(500);
-		        // Toggla vibration med vibration = !toggle_vibration el dyl
-		    	
 		    	
 		    	if (set.getVibrate())
 		    	{
@@ -64,7 +62,8 @@ public class SyncActivity extends Activity
 		    	}
 		    	else
 		    	{
-		    		set.setVibrate(true);		    	
+		    		set.setVibrate(true);		
+			    	v.vibrate(500);
 		    	}
 	            return true;
 	        case R.id.action_schedule:
@@ -80,10 +79,12 @@ public class SyncActivity extends Activity
 		startActivity(intent);
 	}
 	
+	@SuppressLint("DefaultLocale")
 	private void createListeners() 
 	{
 		   sync_button.setOnClickListener(new OnClickListener() {
-		            public void onClick(View v) 
+		            @SuppressLint("DefaultLocale")
+					public void onClick(View v) 
 		            {
 						sync();
 				
@@ -91,6 +92,7 @@ public class SyncActivity extends Activity
 		        });	
 	}
 	
+	@SuppressLint("DefaultLocale")
 	private void sync()
 	{
 		// url gotten from the text input

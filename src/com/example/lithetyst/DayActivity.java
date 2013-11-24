@@ -6,6 +6,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
+import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.os.Bundle;
 import android.os.Vibrator;
@@ -19,10 +20,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.view.ViewParent;
 import android.widget.Button;
-import android.widget.CalendarView;
 import android.widget.DatePicker;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -34,32 +32,29 @@ public class DayActivity extends Activity {
 	private static int chosenMonth;
 	private static int chosenDay; 
 	private static Map<Integer, Integer> schedule_rows;
+	Settings set;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		
-		/// Daglayout
+
 		setContentView(R.layout.activity_day);
 		
-		// F�nga datum fr�n ev. omstart 
+		// Fanga datum fan ev. omstart 
 		Bundle extras = getIntent().getExtras(); 
 		if (extras != null) {
 		    chosenYear = extras.getInt("year");
 		    chosenMonth = extras.getInt("month");
 		    chosenDay = extras.getInt("day");
 		} else {
-			// S�tt dagens datum
 			getTodaysDate();
 		}
 		
-		// skapa virtuellt schema
 		fillSchedule();
-		// Fyll p� schemat 
         fillTableEvents();
-		// Visa r�tt dag
 		getActualDay();
 
+		set  = new Settings(getBaseContext());
 		
         // Skapa lyssnare til datumv�ljaren
 		Button datePickerButton = (Button) findViewById(R.id.date_picker_button);
@@ -92,10 +87,18 @@ public class DayActivity extends Activity {
 	            return true;
 	    	case R.id.action_vibrate_top:
 	        case R.id.action_vibrate:
-		        // 
-		    	Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-		    	v.vibrate(500);
-		        // Toggla vibration med vibration = !toggle_vibration el dyl
+	        	Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+		    	
+		    	if (set.getVibrate())
+		    	{
+		    		set.setVibrate(false);
+		    	}
+		    	else
+		    	{
+		    		set.setVibrate(true);		
+			    	v.vibrate(500);
+		    	}
+
 	            return true;
 	        case R.id.action_settings:
 	        	startSyncActivity();
@@ -108,7 +111,6 @@ public class DayActivity extends Activity {
 	
 	
 	////////////////////////////////////////
-	// F�nga dagens datum (default) och spara
 	private void getTodaysDate(){
 		Time today = new Time(Time.getCurrentTimezone());
 		today.setToNow();	
@@ -118,6 +120,7 @@ public class DayActivity extends Activity {
 	}
 	
 	// Fyll i virtuellt schema, som ska populera tabell
+	@SuppressLint("UseSparseArrays")
 	private void fillSchedule() {
 		schedule_rows = new HashMap<Integer, Integer>();
 		schedule_rows.put(8, R.id.tableRow1);
@@ -142,8 +145,8 @@ public class DayActivity extends Activity {
 		Date date = new Date(chosenYear, chosenMonth, chosenDay);
 		calendar.setTime(date );
 		// Dagnamn att fylla kalenderhuvudet med
-	    String[] days = new String[] { "Torsdag", "Fredag", "L�rdag",
-	    		"Sunday", "Monday", "Tisdag", "Onsdag"	};
+	    String[] days = new String[] { "Torsdag", "Fredag", "Lordag",
+	    		"Sondag", "Mandag", "Tisdag", "Onsdag"	};
 	    String day = days[calendar.get(Calendar.DAY_OF_WEEK)-1];
 		// Foga in
 	    TextView dayTextView = (TextView) findViewById(R.id.textView2);
@@ -151,18 +154,17 @@ public class DayActivity extends Activity {
 	    		+ "/" + chosenDay + "\n" + "(" + day + ")");
 	}
 	
-	// TODO: Rensa schemavyn h�r ist�llet f�r refreshActivity?
-	// Fyll kalendervyn med events fr�n schemat
+	// Fyll kalendervyn med events fran schemat
 	private void fillTableEvents(){
 		Events event_handler = new Events(); // Se Events.java
 		if (event_handler.fileExists("schema.ical",getBaseContext()))
 		{
-			// H�mta events
+			// Hamta events
 			ArrayList< Map<String, String> > events =
 			event_handler.get_events(getBaseContext());
 			// Rader till tabellen
 			ArrayList<TableRow> tables = new ArrayList<TableRow>(); 
-			// Utseende p� tabellen
+			// Utseende pa tabellen
 			TableRow.LayoutParams params = 
 			new TableRow.LayoutParams(LayoutParams.WRAP_CONTENT,LayoutParams.FILL_PARENT);
 			
@@ -170,13 +172,13 @@ public class DayActivity extends Activity {
 			for (int i = 0; i < events.size(); i++)
 			{
 				Map <String, String> event = events.get(i);
-				// Anv�nd bara den aktuella dagens events
+				// Anvand bara den aktuella dagens events
 				if (event.get("start-year").equals(Integer.toString(chosenYear)) && 
 					event.get("start-month").equals(Integer.toString(chosenMonth)) && 
 					event.get("start-day").equals(Integer.toString(chosenDay)))
 				{
 					tables.clear(); // rensa array
-					// L�gg till ett block med en kalenderh�ndelse
+					// Lagg till ett block med en kalenderhandelse
 					Integer hours = Integer.parseInt(event.get("end-hour")) - Integer.parseInt(event.get("start-hour"));
 					for (int y = 0; y < hours; y++)
 					{
@@ -204,7 +206,7 @@ public class DayActivity extends Activity {
 		}
     } // fillTableEvents
 
-	// H�r v�ljer man vilken dag man vill kolla schemat f�r
+	// Har valjer man vilken dag man vill kolla schemat for
 	private DatePickerDialog.OnDateSetListener dateListener =
     		new DatePickerDialog.OnDateSetListener() {
 
@@ -218,16 +220,7 @@ public class DayActivity extends Activity {
             }
     };
 	
-    
-    
-    ///////////////////////////////////////
-	//// Starta aktiviteter ///
-    /*
-	public void startSettingsActivity() {
-		//
-		Intent intent = new Intent(this, SettingsMenuActivity.class);
-		startActivity(intent);
-	}*/
+
 	//// Starta aktiviteter ///
 	public void startSyncActivity() {
 		//
@@ -244,15 +237,6 @@ public class DayActivity extends Activity {
 		myIntent.putExtra("day", chosenDay);
 		finish();
 		startActivity(myIntent);
-		
-		/* 
-		// virtuellt schema
-		fillSchedule();
-		// Fyll p� schemat 
-        fillTableEvents();
-		// Visa r�tt dag
-		getActualDay();
-		*/
 	}
 	//// Slut aktiviteter ////
 }
