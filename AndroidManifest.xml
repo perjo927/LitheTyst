@@ -26,6 +26,7 @@
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/Theme.Retro" >
+        
         <activity
             android:name="com.example.lithetyst.MainActivity"
             android:label="@string/app_name" >
@@ -35,13 +36,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name="com.example.lithetyst.SettingsMenuActivity"
-            android:label="@string/title_activity_settings_menu" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.lithetyst.MainActivity" />
-        </activity>
+
         <activity
             android:name="com.example.lithetyst.SyncActivity"
             android:label="@string/title_activity_sync" >
